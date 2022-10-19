@@ -16,6 +16,7 @@
 		86E756ED28FFEC1500EE6A40 /* FoodGBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E756EC28FFEC1500EE6A40 /* FoodGBTests.swift */; };
 		86E756F728FFEC1500EE6A40 /* FoodGBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E756F628FFEC1500EE6A40 /* FoodGBUITests.swift */; };
 		86E756F928FFEC1500EE6A40 /* FoodGBUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E756F828FFEC1500EE6A40 /* FoodGBUITestsLaunchTests.swift */; };
+		86E7571428FFF25B00EE6A40 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E7571328FFF25B00EE6A40 /* Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		86E756F228FFEC1500EE6A40 /* FoodGBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodGBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E756F628FFEC1500EE6A40 /* FoodGBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodGBUITests.swift; sourceTree = "<group>"; };
 		86E756F828FFEC1500EE6A40 /* FoodGBUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodGBUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		86E7571328FFF25B00EE6A40 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,12 @@
 		86E756D528FFEC1400EE6A40 /* FoodGB */ = {
 			isa = PBXGroup;
 			children = (
+				86E7570528FFECD700EE6A40 /* Components */,
+				86E7570628FFECE600EE6A40 /* Utilits */,
+				86E7570828FFED1100EE6A40 /* Service */,
+				86E7570928FFED2F00EE6A40 /* View */,
+				86E7570A28FFED3D00EE6A40 /* ViewModel */,
+				86E7570728FFECFB00EE6A40 /* Model */,
 				86E756D628FFEC1400EE6A40 /* FoodGBApp.swift */,
 				86E756D828FFEC1400EE6A40 /* ContentView.swift */,
 				86E756DA28FFEC1500EE6A40 /* Assets.xcassets */,
@@ -131,6 +139,89 @@
 				86E756F828FFEC1500EE6A40 /* FoodGBUITestsLaunchTests.swift */,
 			);
 			path = FoodGBUITests;
+			sourceTree = "<group>";
+		};
+		86E7570528FFECD700EE6A40 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		86E7570628FFECE600EE6A40 /* Utilits */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilits;
+			sourceTree = "<group>";
+		};
+		86E7570728FFECFB00EE6A40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86E7571328FFF25B00EE6A40 /* Test.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		86E7570828FFED1100EE6A40 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		86E7570928FFED2F00EE6A40 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				86E7571028FFEDE900EE6A40 /* Authentication */,
+				86E7570F28FFEDDC00EE6A40 /* Profille */,
+				86E7570E28FFEDC700EE6A40 /* Main */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		86E7570A28FFED3D00EE6A40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				86E7571228FFEDFC00EE6A40 /* Profille */,
+				86E7571128FFEDF400EE6A40 /* Authentication */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		86E7570E28FFEDC700EE6A40 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		86E7570F28FFEDDC00EE6A40 /* Profille */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profille;
+			sourceTree = "<group>";
+		};
+		86E7571028FFEDE900EE6A40 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		86E7571128FFEDF400EE6A40 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		86E7571228FFEDFC00EE6A40 /* Profille */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profille;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +356,7 @@
 			files = (
 				86E756E328FFEC1500EE6A40 /* FoodGB.xcdatamodeld in Sources */,
 				86E756E028FFEC1500EE6A40 /* Persistence.swift in Sources */,
+				86E7571428FFF25B00EE6A40 /* Test.swift in Sources */,
 				86E756D928FFEC1400EE6A40 /* ContentView.swift in Sources */,
 				86E756D728FFEC1400EE6A40 /* FoodGBApp.swift in Sources */,
 			);
