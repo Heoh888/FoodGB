@@ -8,6 +8,8 @@
 import CoreData
 
 struct PersistenceController {
+    
+    // MARK: - Properties
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
@@ -30,6 +32,7 @@ struct PersistenceController {
 
     let container: NSPersistentContainer
 
+    // MARK: - Initialisation
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "FoodGB")
         if inMemory {
