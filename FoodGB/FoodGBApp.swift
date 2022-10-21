@@ -6,15 +6,25 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct FoodGBApp: App {
+    
+    // MARK: - Properties
     let persistenceController = PersistenceController.shared
-
+    
+    // MARK: - Initialisation
+    init() {
+        FirebaseApp.configure()
+    }
+    
+    // MARK: - Views
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(AuthViewModel.shared)
         }
     }
 }
