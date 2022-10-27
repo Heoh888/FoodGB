@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "breakfast-consists-of-bread-boiled-eggs-black-grape-salad-dressing-tomatoes-and-sliced-a-a-onions_1150-24482.jpg-2.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

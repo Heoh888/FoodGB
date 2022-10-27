@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct MainMenuView: View {
+struct MenuView: View {
     
-    @State var selectedTap = "Profile"
+    @State var selectedTap = "Home"
     @State var showMainMenu = false
     
     var authViewModel: AuthViewModel

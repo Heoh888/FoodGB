@@ -42,6 +42,12 @@ struct SideMenuView: View {
                 .fontWeight(.heavy)
 
             VStack(alignment: .leading, spacing: 10) {
+                
+                TapButtonMenu(image: "house",
+                              title: "Home",
+                              selectedTab: $selectedTap,
+                              animation: animation)
+                
                 TapButtonMenu(image: "person.crop.circle",
                               title: "Profile",
                               selectedTab: $selectedTap,

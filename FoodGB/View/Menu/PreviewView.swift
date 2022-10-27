@@ -11,6 +11,7 @@ struct PreviewView: View {
     
     @Binding var selrctedTap: String
     @Binding var user: User
+    @Namespace var animation
     
     var authViewModel: AuthViewModel
     
@@ -23,6 +24,10 @@ struct PreviewView: View {
     
     var body: some View {
         TabView(selection: $selrctedTap) {
+            
+            HomePageView(animation: animation)
+                .tag("Home")
+            
             ProfilleView(user: $user, authViewModel: authViewModel)
                 .tag("Profile")
             
