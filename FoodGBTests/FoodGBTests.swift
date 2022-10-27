@@ -6,6 +6,7 @@
 //
 
 import XCTest
+
 @testable import FoodGB
 
 final class FoodGBTests: XCTestCase {
@@ -32,5 +33,4 @@ final class FoodGBTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

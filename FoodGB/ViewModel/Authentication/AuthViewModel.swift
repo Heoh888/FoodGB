@@ -5,35 +5,38 @@
 //  Created by Алексей Ходаков on 19.10.2022.
 //
 
-import Firebase
+import FirebaseAuth
 
 class AuthViewModel: ObservableObject {
     
     // MARK: - Properties
-    @Published var userSession: Firebase.User?
+    @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     @Published var warning: String = ""
+    @Published var error: Error?
     
     static let shared = AuthViewModel()
     
+    private let service: NetworkServiceProtocol
+    
     // MARK: - Initialisation
-    init() {
+    init(service: NetworkServiceProtocol = NetworkService()) {
         userSession = Auth.auth().currentUser
+        self.service = service
         fetchUser()
     }
     
     // MARK: - Functions
     func login(withEmail email: String, password: String) {
-        print(email, password)
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                self.warning = error.localizedDescription
-                print("DEBUG: Login failed\(error.localizedDescription)")
-                return
+        service.login(email: email, password: password) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let user):
+                self.userSession = user
+                self.fetchUser()
+            case let .failure(error):
+                self.error = error
             }
-            guard let user = result?.user else { return }
-            self.userSession = user
-            self.fetchUser()
         }
     }
     

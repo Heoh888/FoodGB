@@ -12,7 +12,7 @@ struct ProfilleView: View {
     
     // MARK: - Properties
     @State var change = false
-    @State var user: User
+    @Binding var user: User
     
     @ObservedObject var viewModel = ProfileViewModel()
     
@@ -25,20 +25,11 @@ struct ProfilleView: View {
                 .ignoresSafeArea()
             
             VStack(alignment: .leading) {
-                Button {
-                    authViewModel.signout()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 15, height: 15)
-                        .padding(.top)
-                        .padding(.bottom, 40.0)
-                }
                 
                 Text("My profile")
-                    .font(.system(size: 34, weight: .semibold))
-                    .padding(.leading)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.top, 70)
                 
                 HStack {
                     Text("Personal details")

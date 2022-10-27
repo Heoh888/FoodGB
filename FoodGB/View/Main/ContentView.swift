@@ -25,7 +25,7 @@ struct ContentView: View {
                 }
             } else {
                 if let user = viewModel.currentUser {
-                    ProfilleView(user: user, authViewModel: viewModel)
+                    MainMenuView(authViewModel: viewModel, user: user)
                 }
             }
         }

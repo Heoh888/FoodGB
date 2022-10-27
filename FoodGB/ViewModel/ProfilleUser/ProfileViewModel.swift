@@ -5,7 +5,6 @@
 //  Created by Алексей Ходаков on 19.10.2022.
 //
 
-import Firebase
 import SwiftUI
 
 class ProfileViewModel: ObservableObject {
@@ -18,7 +17,7 @@ class ProfileViewModel: ObservableObject {
         
         guard let uid = AuthViewModel.shared.currentUser!.id else { return }
         
-        NetworkService.uploaderImage(image: image) { imageUrl in
+        service.uploaderImage(image: image) { imageUrl in
             let data = ["userName": userName,
                         "phone": phone,
                         "address": address,

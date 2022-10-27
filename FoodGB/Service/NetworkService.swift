@@ -6,11 +6,27 @@
 //
 
 import FirebaseStorage
+import FirebaseAuth
 import UIKit
 
-struct NetworkService {
+protocol NetworkServiceProtocol {
+    func login(email: String, password: String, complietion: @escaping (Result<FirebaseAuth.User?, Error>) -> Void)
+}
+
+final class NetworkService: NetworkServiceProtocol {
     
-    static func uploaderImage(image: UIImage, completion: @escaping(String) -> Void) {
+    func login(email: String, password: String, complietion: @escaping (Result<FirebaseAuth.User?, Error>) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                complietion(.failure(error))
+            } else {
+                guard let user = result?.user else { return }
+                complietion(.success(user))
+            }
+        }
+    }
+    
+    func uploaderImage(image: UIImage, completion: @escaping(String) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
         
         let fileName = NSUUID().uuidString
@@ -30,5 +46,4 @@ struct NetworkService {
             }
         }
     }
-    
 }
