@@ -14,25 +14,25 @@ struct SideMenuView: View {
     @Binding var user: User
     @Namespace var animation
     
-    var authViewModel: AuthViewModel
+    @StateObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack(alignment: .leading,
                content: {
-
-            if user.profileImageUrl == nil {
-                Image("userImage")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 70, height: 70)
-                    .padding(.top, 50)
-            } else {
-                KFImage(URL(string: user.profileImageUrl!))
+            
+            if let url = authViewModel.currentUser?.profileImageUrl {
+                KFImage(URL(string: url))
                     .resizable()
                     .scaledToFill()
                     .frame(width: 70, height: 70)
                     .clipped()
                     .cornerRadius(10)
+                    .padding(.top, 50)
+            } else {
+                Image("userImage")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 70, height: 70)
                     .padding(.top, 50)
             }
 

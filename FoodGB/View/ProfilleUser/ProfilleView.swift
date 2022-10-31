@@ -65,30 +65,31 @@ struct ProfilleView: View {
     // MARK: - ViewBuilder
     @ViewBuilder
     func tableProfileData() -> some View {
-        ZStack {
-            GeometryReader { geometry in
+        VStack {
+            ZStack(alignment: .top) {
                 Rectangle()
                     .fill(Color.white)
+                    .frame(height: 300)
                     .cornerRadius(20)
-                    .frame(height: geometry.size.height)
                 
                 HStack(alignment: .top) {
-                    if user.profileImageUrl == nil {
-                        Image("userImage")
-                            .padding([.top, .leading])
-                    } else {
-                        KFImage(URL(string: user.profileImageUrl!))
+                    if let url = viewModel.imageUrl {
+                        KFImage(URL(string: url))
                             .resizable()
                             .scaledToFill()
                             .frame(width: 91, height: 100)
                             .clipped()
                             .cornerRadius(20)
                             .padding([.top, .leading])
+                    } else {
+                        Image("userImage")
+                            .padding([.top, .leading])
                     }
                     ProfilleTextView(user: user)
-                    .padding([.top, .leading, .trailing])
+                        .padding([.top, .leading, .trailing])
                 }
             }
+            Spacer()
         }
     }
 }

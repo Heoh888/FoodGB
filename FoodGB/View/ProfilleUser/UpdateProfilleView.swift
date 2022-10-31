@@ -60,13 +60,14 @@ struct UpdateProfilleView: View {
                 if name == "" {
                     name = user.userName
                 } else {
-                    if let image = selectedImage {
-                        viewModel.updateUser(userName: name, phone: phone, address: address, image: image) { url in
-                            user.profileImageUrl = url
-                        }
-                    } else {
-                        viewModel.updateUser(userName: name, phone: phone, address: address)
-                    }
+                    viewModel.updateUser(userName: name, phone: phone, address: address, image: selectedImage ?? nil)
+//                    if let image = selectedImage {
+//                        viewModel.updateUser(userName: name, phone: phone, address: address, image: image) { url in
+//                            user.profileImageUrl = url
+//                        }
+//                    } else {
+//                        viewModel.updateUser(userName: name, phone: phone, address: address)
+//                    }
                     user.userName = name
                     user.phone = phone
                     user.address = address

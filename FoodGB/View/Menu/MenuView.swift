@@ -11,6 +11,7 @@ struct MenuView: View {
     
     @State var selectedTap = "Home"
     @State var showMainMenu = false
+    @State var buttonDisabled = false
     
     var authViewModel: AuthViewModel
     
@@ -24,22 +25,23 @@ struct MenuView: View {
             SideMenuView(selectedTap: $selectedTap,
                          user: $user,
                          authViewModel: authViewModel)
-            
-            
+
             ZStack {
-                
                 Color.white
                     .opacity(0.3)
                     .cornerRadius(showMainMenu ? 50 : 0)
                     .offset(x: showMainMenu ? -35 : 0, y: showMainMenu ? 70 : 0)
                     .padding(.vertical, 30)
                 
-                PreviewView(selrctedTap: $selectedTap, user: $user, authViewModel: authViewModel)
+                PreviewView(selrctedTap: $selectedTap, user: $user,
+                            buttonDisabled: $buttonDisabled,
+                            authViewModel: authViewModel)
                     .cornerRadius(showMainMenu ? 50 : 0)
                     .onTapGesture {
                         if showMainMenu == true {
                             withAnimation(.spring()) {
                                 showMainMenu.toggle()
+                                buttonDisabled.toggle()
                             }
                         }
                     }
@@ -51,6 +53,7 @@ struct MenuView: View {
                 Button(action: {
                     withAnimation(.spring()) {
                         showMainMenu.toggle()
+                        buttonDisabled.toggle()
                     }
                 }, label: {
                     VStack(alignment: .leading, spacing: 5) {
