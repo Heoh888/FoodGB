@@ -14,13 +14,12 @@ struct PreviewView: View {
     @Binding var buttonDisabled: Bool
     @Namespace var animation
     
-    var authViewModel: AuthViewModel
+    @StateObject var viewModel = ProfileViewModel()
     
-    init(selrctedTap: Binding<String>,  user: Binding<User>, buttonDisabled: Binding<Bool>, authViewModel: AuthViewModel) {
+    init(selrctedTap: Binding<String>,  user: Binding<User>, buttonDisabled: Binding<Bool>) {
         self._selrctedTap = selrctedTap
         self._user = user
         self._buttonDisabled = buttonDisabled
-        self.authViewModel = authViewModel
         UITabBar.appearance().isHidden = true
     }
     
@@ -30,7 +29,7 @@ struct PreviewView: View {
             HomePageView(buttonDisabled: $buttonDisabled, animation: animation)
                 .tag("Home")
             
-            ProfilleView(user: $user, authViewModel: authViewModel)
+            ProfilleView(user: $user, viewModel: viewModel)
                 .tag("Profile")
             
             OrdersView()

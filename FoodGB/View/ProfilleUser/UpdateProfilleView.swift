@@ -11,16 +11,15 @@ import Kingfisher
 struct UpdateProfilleView: View {
     
     // MARK: - Properties
-    @Binding var user: User
-    
     @State var name: String
-    @State var phone = ""
-    @State var address = ""
-    @State var urlImage: String?
-    @State var userImage: Image?
+    @State var id: String
+    @State var phone: String = ""
+    @State var address: String = ""
+    @State var userImage: Image
     @State var imagePickerPresented = false
     @State private var selectedImage: UIImage?
     
+    @Binding var user: User
     @Binding var change: Bool
     
     @ObservedObject var viewModel: ProfileViewModel
@@ -31,6 +30,7 @@ struct UpdateProfilleView: View {
         VStack {
             HStack {
                 VStack {
+                    
                     profileImage()
                     
                     Button(action: { imagePickerPresented.toggle()}, label: {
@@ -46,7 +46,6 @@ struct UpdateProfilleView: View {
             }
             .padding(.top, 50)
         
-            
             CustomTextField(text: $name, label: "Name")
             
             CustomTextField(text: $phone, label: "Phone")
@@ -58,16 +57,13 @@ struct UpdateProfilleView: View {
             Button {
                 // TO:DO - Если имени нет...
                 if name == "" {
-                    name = user.userName
+                    name = ""
                 } else {
-                    viewModel.updateUser(userName: name, phone: phone, address: address, image: selectedImage ?? nil)
-//                    if let image = selectedImage {
-//                        viewModel.updateUser(userName: name, phone: phone, address: address, image: image) { url in
-//                            user.profileImageUrl = url
-//                        }
-//                    } else {
-//                        viewModel.updateUser(userName: name, phone: phone, address: address)
-//                    }
+                    viewModel.updateUser(userName: name,
+                                         phone: phone,
+                                         address: address,
+                                         image: selectedImage ?? nil,
+                                         id: id)
                     user.userName = name
                     user.phone = phone
                     user.address = address
@@ -95,40 +91,13 @@ struct UpdateProfilleView: View {
     // MARK: - ViewBuilder
     @ViewBuilder
     func profileImage() -> some View {
-        if urlImage == nil {
-            if userImage == nil {
-                Image("userImage")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 120, height: 135)
-            } else if let image = userImage {
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 120, height: 135)
-                    .clipped()
-                    .cornerRadius(20)
-                    .padding([.top, .leading])
-            }
-        }  else  {
-            if userImage == nil {
-                KFImage(URL(string: urlImage!))
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 120, height: 135)
-                    .clipped()
-                    .cornerRadius(20)
-                    .padding([.top, .leading])
-            } else if let image = userImage {
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 120, height: 135)
-                    .clipped()
-                    .cornerRadius(20)
-                    .padding([.top, .leading])
-            }
-        }
+        userImage
+            .resizable()
+            .scaledToFill()
+            .frame(width: 120, height: 135)
+            .clipped()
+            .cornerRadius(20)
+            .padding([.top, .leading])
     }
 }
 

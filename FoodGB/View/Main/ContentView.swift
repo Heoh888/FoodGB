@@ -25,7 +25,7 @@ struct ContentView: View {
                 }
             } else {
                 if let user = viewModel.currentUser {
-                    MenuView(authViewModel: viewModel, user: user)
+                    MenuView(user: user)
                 }
             }
         }

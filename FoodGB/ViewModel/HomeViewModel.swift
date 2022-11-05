@@ -19,7 +19,8 @@ class HomeViewModel: ObservableObject {
         getFoods()
     }
     
-    func getFoods() {
+    // MARK: - Private functions
+    private func getFoods() {
         service.getFoods { [weak self] result in
             guard let self = self else { return }
             switch result {

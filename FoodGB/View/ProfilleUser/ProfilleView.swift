@@ -14,9 +14,7 @@ struct ProfilleView: View {
     @State var change = false
     @Binding var user: User
     
-    @ObservedObject var viewModel = ProfileViewModel()
-    
-    var authViewModel: AuthViewModel
+    @StateObject var viewModel: ProfileViewModel
     
     // MARK: - Views
     var body: some View {
@@ -46,11 +44,15 @@ struct ProfilleView: View {
                             .foregroundColor(Color("MainColor"))
                     }
                     .sheet(isPresented: $change) {
-                        UpdateProfilleView(user: $user,
-                                           name: user.userName,
-                                           urlImage: authViewModel.currentUser?.profileImageUrl,
+                        UpdateProfilleView(name: user.userName,
+                                           id: user.id!,
+                                           phone: user.phone ?? "",
+                                           address: user.address ?? "",
+                                           userImage: viewModel.userImage!,
+                                           user: $user,
                                            change: $change,
                                            viewModel: viewModel)
+                        
                     }
                 }
                 .padding(.top)
@@ -71,18 +73,14 @@ struct ProfilleView: View {
                     .fill(Color.white)
                     .frame(height: 300)
                     .cornerRadius(20)
-                
                 HStack(alignment: .top) {
-                    if let url = viewModel.imageUrl {
-                        KFImage(URL(string: url))
+                    if let image = viewModel.userImage {
+                        image
                             .resizable()
                             .scaledToFill()
                             .frame(width: 91, height: 100)
                             .clipped()
                             .cornerRadius(20)
-                            .padding([.top, .leading])
-                    } else {
-                        Image("userImage")
                             .padding([.top, .leading])
                     }
                     ProfilleTextView(user: user)

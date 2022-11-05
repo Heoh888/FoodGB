@@ -7,15 +7,7 @@
 
 import FirebaseStorage
 import FirebaseAuth
-import UIKit
-
-protocol NetworkServiceProtocol {
-    func getFoods(complietion: @escaping (Result<[Food], Error>) -> Void)
-    func getUser(id: String, complietion: @escaping (Result<User, Error>) -> Void)
-    func login(email: String, password: String, complietion: @escaping (Result<FirebaseAuth.User?, Error>) -> Void)
-    func register(withEmail email: String, password: String, userName: String, complietion: @escaping (Result<FirebaseAuth.User?, Error>) -> Void)
-    func updateUser(userName: String, phone: String, address: String, image: UIImage?, complition: @escaping (String) -> ())
-}
+import SwiftUI
 
 final class NetworkService: NetworkServiceProtocol {
     
@@ -45,6 +37,15 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
     
+    func loadImage(url: String, complietion: @escaping (Image) -> ()) {
+        guard let url = URL(string: url) else { return }
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, let image = UIImage(data: data) else { return }
+            complietion(Image(uiImage: image))
+        }
+        task.resume()
+    }
+    
     func login(email: String, password: String, complietion: @escaping (Result<FirebaseAuth.User?, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
@@ -62,7 +63,6 @@ final class NetworkService: NetworkServiceProtocol {
                 complietion(.failure(error))
             } else {
                 guard let user = result?.user else { return }
-                
                 let data = ["userName": userName,
                             "email": email,
                             "uid": user.uid]
@@ -75,66 +75,60 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
     
-    // TO:DO - Преработать логику
-    func updateUser(userName: String, phone: String, address: String, image: UIImage?, complition: @escaping (String) -> ())  {
-        guard let uid = AuthViewModel.shared.currentUser!.id else { return }
+    func updateUser(userName: String, phone: String, address: String, image: UIImage?, id: String, complietion: @escaping (String, UIImage) -> Void)  {
+        let data = ["userName": userName,
+                    "phone": phone,
+                    "address": address,
+                    "profileImageUrl": ""]
         
         if let img = image {
-            uploaderImage(image: img) { imageUrl in
-                
-                let data = ["userName": userName,
-                            "phone": phone,
-                            "address": address,
-                            "profileImageUrl": imageUrl]
-                
-                
-                COLLECTION_USERS.document(uid).updateData(data) { err in
-                    if let err = err {
-                        complition(err.localizedDescription)
-                        print("Error updating document: \(err)")
-                    } else {
-                        AuthViewModel.shared.getUser()
-                        print("Document successfully updated")
-                        complition(imageUrl)
-                    }
+            let queue = OperationQueue()
+            let getImageUrl = GetImageUrlOperation(image: img)
+            queue.addOperation(getImageUrl)
+            
+            let uploadeDate = UplouderDataOperation(id: id, data: data)
+            uploadeDate.addDependency(getImageUrl)
+            
+            // TO:DO - Добавить операцию для удаление предыдущий картинки пользователя
+            uploadeDate.completionBlock = {
+                OperationQueue.main.addOperation {
+                    complietion(uploadeDate.urlImage!, img)
                 }
             }
+            OperationQueue.main.addOperation(uploadeDate)
         } else {
-            let data = ["userName": userName,
-                        "phone": phone,
-                        "address": address]
-            
-            COLLECTION_USERS.document(uid).updateData(data) { err in
-                if let err = err {
-                    complition(err.localizedDescription)
-                    print("Error updating document: \(err)")
-                } else {
-                    AuthViewModel.shared.getUser()
-                    print("Document successfully updated")
-                }
+            let uploadeDate = UplouderDataOperation(id: id, data: data)
+            OperationQueue.main.addOperation(uploadeDate)
+        }
+    }
+    
+    func updateData(data: [String: String], id: String) {
+        COLLECTION_USERS.document(id).updateData(data) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
             }
         }
     }
     
-    private func uploaderImage(image: UIImage, completion: @escaping(String) -> Void) {
-        guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
-        
+    func uploaderImage(image: UIImage, completion: @escaping(String) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
         let fileName = NSUUID().uuidString
         let ref = Storage.storage().reference(withPath: "/profile_images/\(fileName)")
-        
         
         ref.putData(imageData, metadata: nil) { _, error in
             if let error = error {
                 print("DEBUG: Failed to upload image\(error.localizedDescription)")
                 return
             }
-            
             print("Successfully uplooader image...")
-            
             ref.downloadURL { url, _ in
                 guard let imageUrl = url?.absoluteString else { return }
                 completion(imageUrl)
             }
         }
     }
+    
+    func signout() { try? Auth.auth().signOut() }
 }

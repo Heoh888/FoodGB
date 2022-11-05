@@ -9,9 +9,11 @@ import SwiftUI
 
 struct CustomCorners: Shape {
     
+    // MARK: - Properties
     var corners: UIRectCorner
     var radius: CGFloat
     
+    // MARK: - Functions
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect,
                                 byRoundingCorners: corners,
