@@ -9,11 +9,13 @@ import SwiftUI
 
 struct MenuView: View {
     
+    // MARK: - Properties
     @State var selectedTap = "Home"
     @State var showMainMenu = false
     @State var buttonDisabled = false
     @State var user: User
-    
+
+    // MARK: - Views
     var body: some View {
         ZStack {
             Color("MainColor")
@@ -70,7 +72,6 @@ struct MenuView: View {
                                 .frame(width: 30, height: 3)
                         }
                         .rotationEffect(.init(degrees: showMainMenu ? 50 : 0))
-                        
                     }
                 })
                 .padding(),

@@ -15,10 +15,10 @@
 		8659922C2902193200476617 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659922B2902193200476617 /* Extensions.swift */; };
 		867A10C7290AE79C00CB000E /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A10C6290AE79C00CB000E /* HomePageView.swift */; };
 		867A10C9290BF23F00CB000E /* FoodCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A10C8290BF23F00CB000E /* FoodCarouselView.swift */; };
-		867B64FC2916CEBA00367BD0 /* GetImageUrlOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686C6322911E2BD00D3FEC9 /* GetImageUrlOperation.swift */; };
+		867B64FC2916CEBA00367BD0 /* ImageUploaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686C6322911E2BD00D3FEC9 /* ImageUploaderOperation.swift */; };
 		867B64FD2916CEBA00367BD0 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686C6362911E34000D3FEC9 /* AsyncOperation.swift */; };
 		867B64FE2916CEBA00367BD0 /* UplouderDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686C6342911E2DA00D3FEC9 /* UplouderDataOperation.swift */; };
-		8686C6332911E2BD00D3FEC9 /* GetImageUrlOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686C6322911E2BD00D3FEC9 /* GetImageUrlOperation.swift */; };
+		8686C6332911E2BD00D3FEC9 /* ImageUploaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686C6322911E2BD00D3FEC9 /* ImageUploaderOperation.swift */; };
 		8686C6352911E2DA00D3FEC9 /* UplouderDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686C6342911E2DA00D3FEC9 /* UplouderDataOperation.swift */; };
 		8686C6372911E34000D3FEC9 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686C6362911E34000D3FEC9 /* AsyncOperation.swift */; };
 		8686C6392911F53900D3FEC9 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686C6382911F53900D3FEC9 /* NetworkServiceProtocol.swift */; };
@@ -125,7 +125,7 @@
 		8659922B2902193200476617 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		867A10C6290AE79C00CB000E /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		867A10C8290BF23F00CB000E /* FoodCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCarouselView.swift; sourceTree = "<group>"; };
-		8686C6322911E2BD00D3FEC9 /* GetImageUrlOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageUrlOperation.swift; sourceTree = "<group>"; };
+		8686C6322911E2BD00D3FEC9 /* ImageUploaderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploaderOperation.swift; sourceTree = "<group>"; };
 		8686C6342911E2DA00D3FEC9 /* UplouderDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UplouderDataOperation.swift; sourceTree = "<group>"; };
 		8686C6362911E34000D3FEC9 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		8686C6382911F53900D3FEC9 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 		8686C6312911E2AB00D3FEC9 /* NetworkOperations */ = {
 			isa = PBXGroup;
 			children = (
-				8686C6322911E2BD00D3FEC9 /* GetImageUrlOperation.swift */,
+				8686C6322911E2BD00D3FEC9 /* ImageUploaderOperation.swift */,
 				8686C6342911E2DA00D3FEC9 /* UplouderDataOperation.swift */,
 			);
 			path = NetworkOperations;
@@ -701,7 +701,7 @@
 				865992292902175900476617 /* KeyboardAdaptive.swift in Sources */,
 				8686C6372911E34000D3FEC9 /* AsyncOperation.swift in Sources */,
 				86E756E028FFEC1500EE6A40 /* Persistence.swift in Sources */,
-				8686C6332911E2BD00D3FEC9 /* GetImageUrlOperation.swift in Sources */,
+				8686C6332911E2BD00D3FEC9 /* ImageUploaderOperation.swift in Sources */,
 				86E7571A28FFF5A000EE6A40 /* NetworkService.swift in Sources */,
 				865992242901A66100476617 /* ImagePicker.swift in Sources */,
 				86933D002909B8B900DE39C8 /* HomeViewModel.swift in Sources */,
@@ -761,7 +761,7 @@
 				86E2F9B7290592FC0066C795 /* FoodGBApp.swift in Sources */,
 				86E2F9AB290592BE0066C795 /* CustomTextField.swift in Sources */,
 				86E2F9A7290592780066C795 /* StartView.swift in Sources */,
-				867B64FC2916CEBA00367BD0 /* GetImageUrlOperation.swift in Sources */,
+				867B64FC2916CEBA00367BD0 /* ImageUploaderOperation.swift in Sources */,
 				868AB235290F0E1F00FBA7E2 /* HomePageView.swift in Sources */,
 				868AB23A290F0E3200FBA7E2 /* PrivacyPolicy.swift in Sources */,
 				868AB241290F0E4000FBA7E2 /* FoodModel.swift in Sources */,

@@ -10,12 +10,12 @@ import Kingfisher
 
 struct DetailsFoodView: View {
     
+    // MARK: - Properties
     @State var like = false
-    
     var food: Food
-    
     @Environment(\.presentationMode) var presentationMode
     
+    // MARK: - Views
     var body: some View {
         ZStack(alignment: .leading) {
             Color("Background")

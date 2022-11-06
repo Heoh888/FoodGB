@@ -9,11 +9,14 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     
+    // MARK: - Properties
     @Published var foods: [Food] = []
     @Published var error: Error?
     
+    // MARK: - Private properties
     private var  service: NetworkServiceProtocol!
     
+    // MARK: - Initialisation
     init(service: NetworkServiceProtocol = NetworkService()) {
         self.service = service
         getFoods()

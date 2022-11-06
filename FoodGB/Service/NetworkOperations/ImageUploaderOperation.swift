@@ -8,11 +8,12 @@
 import Foundation
 import SwiftUI
 
-class GetImageUrlOperation: AsyncOperation {
+class ImageUploaderOperation: AsyncOperation {
 
     // MARK: - Properties
     let service: NetworkServiceProtocol
     var image: UIImage
+    
     var imageUrl: String?
     
     // MARK: - Functions

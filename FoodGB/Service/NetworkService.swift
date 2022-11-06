@@ -82,20 +82,24 @@ final class NetworkService: NetworkServiceProtocol {
                     "profileImageUrl": ""]
         
         if let img = image {
+            
+            /// Операция загрузки `img` в Firebase.Storage.
+            /// Также операция возвращает `imageUrl` только что загруженного изображения
             let queue = OperationQueue()
-            let getImageUrl = GetImageUrlOperation(image: img)
+            let getImageUrl = ImageUploaderOperation(image: img)
             queue.addOperation(getImageUrl)
             
+            /// Операция  обновляет информацию о пользователе
             let uploadeDate = UplouderDataOperation(id: id, data: data)
             uploadeDate.addDependency(getImageUrl)
-            
-            // TO:DO - Добавить операцию для удаление предыдущий картинки пользователя
             uploadeDate.completionBlock = {
                 OperationQueue.main.addOperation {
                     complietion(uploadeDate.urlImage!, img)
                 }
             }
             OperationQueue.main.addOperation(uploadeDate)
+            
+            /// TO:DO - Добавить операцию для удаление предыдущий картинки пользователя
         } else {
             let uploadeDate = UplouderDataOperation(id: id, data: data)
             OperationQueue.main.addOperation(uploadeDate)

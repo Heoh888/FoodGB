@@ -27,30 +27,34 @@ struct ProfilleTextView: View {
                     .font(.system(size: CGFloat(15)))
                     .opacity(0.5)
                     .padding(.top, 2.0)
-                
-                Rectangle()
-                    .fill(Color.black)
-                    .opacity(0.5)
-                    .frame(height: 1)
             }
             
-            VStack(alignment: .leading) {
-                Text(user.phone ?? "")
-                    .font(.system(size: CGFloat(15)))
-                    .opacity(0.5)
-                    .padding(.top, 2.0)
-                
+            if user.phone != "" && user.phone != nil {
+                VStack(alignment: .leading) {
                     Rectangle()
                         .fill(Color.black)
                         .opacity(0.5)
                         .frame(height: 1)
+                    
+                    Text(user.phone ?? "")
+                        .font(.system(size: CGFloat(15)))
+                        .opacity(0.5)
+                        .padding(.top, 2.0)
+                }
             }
             
-            VStack(alignment: .leading) {
-                Text(user.address ?? "")
-                    .font(.system(size: CGFloat(15)))
-                    .opacity(0.5)
-                    .padding(.top, 2.0)
+            if user.address != "" && user.address != nil {
+                VStack(alignment: .leading) {
+                    Rectangle()
+                        .fill(Color.black)
+                        .opacity(0.5)
+                        .frame(height: 1)
+                    
+                    Text(user.address ?? "")
+                        .font(.system(size: CGFloat(15)))
+                        .opacity(0.5)
+                        .padding(.top, 2.0)
+                }
             }
         }
     }

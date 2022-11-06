@@ -9,13 +9,13 @@ import SwiftUI
 
 struct TapButtonMenu: View {
     
+    // MARK: - Properties
     var image: String
     var title: String
-    
+    var animation: Namespace.ID
     @Binding var selectedTab: String
     
-    var animation: Namespace.ID
-    
+    // MARK: - Views
     var body: some View {
         Button(action: {
             withAnimation(.spring()) {

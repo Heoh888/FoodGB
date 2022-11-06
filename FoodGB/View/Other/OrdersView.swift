@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OrdersView: View {
+
+    // MARK: - Views
     var body: some View {
         NavigationView {
             Text("OrdersView")

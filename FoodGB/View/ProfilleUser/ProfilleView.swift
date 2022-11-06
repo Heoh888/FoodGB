@@ -19,7 +19,7 @@ struct ProfilleView: View {
     // MARK: - Views
     var body: some View {
         ZStack(alignment: .leading) {
-            Color.gray.opacity(0.15)
+            Color("Background_2")
                 .ignoresSafeArea()
             
             VStack(alignment: .leading) {
@@ -27,7 +27,7 @@ struct ProfilleView: View {
                 Text("My profile")
                     .font(.title)
                     .fontWeight(.bold)
-                    .padding(.top, 70)
+                    .padding(.top, 60)
                 
                 HStack {
                     Text("Personal details")
@@ -52,12 +52,19 @@ struct ProfilleView: View {
                                            user: $user,
                                            change: $change,
                                            viewModel: viewModel)
-                        
                     }
                 }
                 .padding(.top)
                 
-                tableProfileData()
+                VStack(spacing: 30) {
+                    tableProfileData()
+                    
+                    buttonMenu(label: "Orders")
+                    
+                    buttonMenu(label: "Pending reviews")
+                    
+                    buttonMenu(label: "Faq")
+                }
                 Spacer()
             }
             .padding(.horizontal, 30.0)
@@ -68,26 +75,44 @@ struct ProfilleView: View {
     @ViewBuilder
     func tableProfileData() -> some View {
         VStack {
-            ZStack(alignment: .top) {
-                Rectangle()
-                    .fill(Color.white)
-                    .frame(height: 300)
-                    .cornerRadius(20)
-                HStack(alignment: .top) {
-                    if let image = viewModel.userImage {
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 91, height: 100)
-                            .clipped()
-                            .cornerRadius(20)
-                            .padding([.top, .leading])
-                    }
-                    ProfilleTextView(user: user)
-                        .padding([.top, .leading, .trailing])
+            HStack(alignment: .top) {
+                if let image = viewModel.userImage {
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 91, height: 100)
+                        .clipped()
+                        .cornerRadius(15)
+                        .padding([.top, .leading])
                 }
+                ProfilleTextView(user: user)
+                    .padding()
             }
-            Spacer()
+            .background(Color.white)
+            .cornerRadius(20)
+            
         }
+    }
+    
+    @ViewBuilder
+    func buttonMenu(label: String) -> some View {
+        Button {
+            
+        } label: {
+            HStack {
+                Text(label)
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.black)
+                
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.black)
+            }
+            .padding(.horizontal, 25)
+        }
+        .frame(height: 60)
+        .background(Color.white)
+        .cornerRadius(20)
     }
 }

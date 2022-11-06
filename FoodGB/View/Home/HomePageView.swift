@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomePageView: View {
     
+    // MARK: - Properties
     @Binding var buttonDisabled: Bool
     @State var search = ""
     @State var currentMenu = "Foods"
@@ -17,6 +18,7 @@ struct HomePageView: View {
     var animation: Namespace.ID
     var menu = ["Foods", "Drinks", "Snacks", "Sushi", "Polls", "Pizza"]
     
+    // MARK: - Views
     var body: some View {
         ZStack(alignment: .leading) {
             Color("Background")
@@ -60,6 +62,7 @@ struct HomePageView: View {
                     .padding(.trailing, 70)
                 }
                 
+                // Carousel
                 FoodCarouselView(buttonDisabled: $buttonDisabled, viewModel: viewModel)
                 Spacer()
             }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SecurityView: View {
+
+    // MARK: - Views
     var body: some View {
         NavigationView {
             Text("SecurityView")

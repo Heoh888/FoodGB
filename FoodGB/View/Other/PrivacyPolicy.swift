@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PrivacyPolicy: View {
+
+    // MARK: - Views
     var body: some View {
         NavigationView {
             Text("PrivacyPolicy")

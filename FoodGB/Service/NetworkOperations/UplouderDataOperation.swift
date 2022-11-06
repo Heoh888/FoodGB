@@ -17,7 +17,7 @@ class UplouderDataOperation: AsyncOperation {
 
     // MARK: - Functions
     override func main() {
-        if let imageUrl = dependencies.first as? GetImageUrlOperation {
+        if let imageUrl = dependencies.first as? ImageUploaderOperation {
             data["profileImageUrl"] = imageUrl.imageUrl
             service.updateData(data: data, id: id)
             urlImage = imageUrl.imageUrl

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PromoView: View {
+    
+    // MARK: - Views
     var body: some View {
         NavigationView {
             Text("PromoView")

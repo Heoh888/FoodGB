@@ -10,12 +10,13 @@ import Kingfisher
 
 struct SideMenuView: View {
     
+    // MARK: - Properties
     @Binding var selectedTap: String
     @Binding var user: User
     @Namespace var animation
-    
     @EnvironmentObject var authViewModel: AuthViewModel
     
+    // MARK: - Views
     var body: some View {
         VStack(alignment: .leading,
                content: {
@@ -24,37 +25,36 @@ struct SideMenuView: View {
                 
                 TapButtonMenu(image: "house",
                               title: "Home",
-                              selectedTab: $selectedTap,
-                              animation: animation)
+                              animation: animation,
+                              selectedTab: $selectedTap)
                 
                 TapButtonMenu(image: "person.crop.circle",
                               title: "Profile",
-                              selectedTab: $selectedTap,
-                              animation: animation)
+                              animation: animation,
+                              selectedTab: $selectedTap)
                 
                 TapButtonMenu(image: "cart",
                               title: "Orders",
-                              selectedTab: $selectedTap,
-                              animation: animation)
+                              animation: animation,
+                              selectedTab: $selectedTap)
                 
                 TapButtonMenu(image: "tag",
                               title: "Offer and promo",
-                              selectedTab: $selectedTap,
-                              animation: animation)
+                              animation: animation,
+                              selectedTab: $selectedTap)
                 
                 TapButtonMenu(image: "doc.text",
                               title: "Privacy policy",
-                              selectedTab: $selectedTap,
-                              animation: animation)
-                
+                              animation: animation,
+                              selectedTab: $selectedTap)
+
                 TapButtonMenu(image: "shield.righthalf.filled",
                               title: "Security",
-                              selectedTab: $selectedTap,
-                              animation: animation)
+                              animation: animation,
+                              selectedTab: $selectedTap)
             }
             .padding(.leading, -15)
             .padding(.top, 100)
-            
             Spacer()
             
             Button(action: {

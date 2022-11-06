@@ -10,13 +10,15 @@ import Kingfisher
 
 struct FoodCarouselView: View {
     
+    // MARK: - Properties
     @Binding var buttonDisabled: Bool
     @StateObject var viewModel: HomeViewModel
-    
     @State var showDetailsFood = false
     
+    // MARK: - Private properties
     @State private var selectedData: Food?
     
+    // MARK: - Views
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 35) {
@@ -48,7 +50,6 @@ struct FoodCarouselView: View {
                                     .foregroundColor(Color("MainColor"))
                                 
                             }
-                            
                         }
                         .shadow(color: .gray.opacity(0.5), radius: 30)
                         .frame(width: 220, height: 300)
@@ -68,4 +69,3 @@ struct FoodCarouselView: View {
         }
     }
 }
-
