@@ -44,4 +44,6 @@ extension View {
     func keyboardAdaptive() -> some View {
         ModifiedContent(content: self, modifier: KeyboardAdaptive())
     }
+    
+    func getRect() -> CGRect { UIScreen.main.bounds }
 }
