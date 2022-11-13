@@ -14,6 +14,7 @@ struct HomePageView: View {
     @State var search = ""
     @State var currentMenu = "Foods"
     @StateObject var viewModel = HomeViewModel()
+    @StateObject var myFoodsviewModel: MyFoodsViewModel
     
     var animation: Namespace.ID
     var menu = ["Foods", "Drinks", "Snacks", "Sushi", "Polls", "Pizza"]
@@ -28,7 +29,7 @@ struct HomePageView: View {
                 Text("Delicious food for you")
                     .font(.title)
                     .fontWeight(.bold)
-                    .frame(width: 180)
+                    .frame(width: 180, height: 80)
                     .padding(.horizontal, 30)
                     .padding(.top, 30)
                 
@@ -63,35 +64,10 @@ struct HomePageView: View {
                 }
                 
                 // Carousel
-                FoodCarouselView(buttonDisabled: $buttonDisabled, viewModel: viewModel)
+                FoodCarouselView(buttonDisabled: $buttonDisabled, viewModel: viewModel, myFoodsviewModel: myFoodsviewModel)
                 Spacer()
             }
             .padding(.top, 30)
-            .overlay {
-                VStack {
-                    Spacer()
-                    HStack(spacing: 70) {
-                        Image(systemName: "house.fill")
-                            .scaleEffect(1.5)
-                            .foregroundColor(Color("MainColor"))
-                            .shadow(color: Color("MainColor")
-                                .opacity(0.6), radius: 10)
-                        
-                        Image(systemName: "heart")
-                            .scaleEffect(1.5)
-                            .foregroundColor(.gray)
-                        
-                        Image(systemName: "person")
-                            .scaleEffect(1.5)
-                            .foregroundColor(.gray)
-                        Image(systemName: "clock.arrow.circlepath")
-                            .scaleEffect(1.5)
-                            .foregroundColor(.gray)
-                    }
-                    .padding(.bottom)
-                }
-                .padding()
-            }
         }
     }
     

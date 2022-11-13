@@ -13,7 +13,6 @@ struct PreviewView: View {
     @Binding var selrctedTap: String
     @Binding var user: User
     @Binding var buttonDisabled: Bool
-    @Namespace var animation
     @StateObject var viewModel = ProfileViewModel()
     
     // MARK: - Initialisation
@@ -28,8 +27,8 @@ struct PreviewView: View {
     var body: some View {
         TabView(selection: $selrctedTap) {
 
-            HomePageView(buttonDisabled: $buttonDisabled, animation: animation)
-                .tag("Home")
+            MainPage(buttonDisabled: $buttonDisabled, user: $user)
+                .tag("Main")
 
             ProfilleView(user: $user, viewModel: viewModel)
                 .tag("Profile")

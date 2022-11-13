@@ -13,6 +13,7 @@ struct FoodCarouselView: View {
     // MARK: - Properties
     @Binding var buttonDisabled: Bool
     @StateObject var viewModel: HomeViewModel
+    @StateObject var myFoodsviewModel: MyFoodsViewModel
     @State var showDetailsFood = false
     
     // MARK: - Private properties
@@ -45,7 +46,7 @@ struct FoodCarouselView: View {
                                     .frame(height: 50)
                                     .padding()
                                 
-                                Text("\(food.price) $")
+                                Text("\(food.price ?? 0) $")
                                     .font(.system(size: 20, weight: .heavy))
                                     .foregroundColor(Color("MainColor"))
                                 
@@ -59,7 +60,7 @@ struct FoodCarouselView: View {
                     })
                     .disabled(buttonDisabled)
                     .fullScreenCover(item: $selectedData) { item in
-                        DetailsFoodView(food: item)
+                        DetailsFoodView(food: item, myFoodsViewModel: myFoodsviewModel)
                     }
                 }
             }

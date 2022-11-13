@@ -10,7 +10,7 @@ import Foundation
 class UplouderDataOperation: AsyncOperation {
     
     // MARK: - Properties
-    let service: NetworkServiceProtocol
+    private let service: NetworkServiceProtocol
     let id: String
     var data: [String : String]
     var urlImage: String?

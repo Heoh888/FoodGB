@@ -10,6 +10,22 @@ import SwiftUI
 @testable import FoodGB
 
 class MockNetworkService: NetworkServiceProtocol {
+    func updateUser(userName: String, phone: String, address: String, image: UIImage?, id: String, complietion: @escaping (String, UIImage) -> Void) {
+    }
+    
+    func addMyFood(food: Food, uid: String, id: String) {
+    }
+    
+    func getMyFood(id: String, complietion: @escaping (Result<[Food], Error>) -> Void) {
+        complietion(.success([Food(name: "TestFood",
+                                   description: "TestFood",
+                                   foodImageUrl: "TestFood",
+                                   price: 1)]))
+    }
+    
+    func deleteMyFoods(uid: String, id: String) {
+    }
+    
     
     func loadImage(url: String, complietion: @escaping (Image) -> ()) {
         complietion(Image("userImage"))

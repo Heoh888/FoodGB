@@ -13,24 +13,24 @@ final class FoodGBTests: XCTestCase {
     let service = MockNetworkService()
     
     // MARK: - testing ProfileViewModel
-    func test_loadImage() {
+    func testLoadImage() {
         let viewModel = ProfileViewModel(service: service)
         XCTAssertNotNil(viewModel.userImage)
     }
     
     // MARK: - testing HomeViewModel
-    func test_getFoods() throws {
+    func testGetFoods() throws {
         let viewModel = HomeViewModel(service: service)
         XCTAssertTrue(!viewModel.foods.isEmpty)
     }
     
     // MARK: - testing AuthViewModel
-    func test_getUser() throws {
+    func testGetUser() throws {
         let viewModel = AuthViewModel(service: service)
         XCTAssertNotNil(viewModel.currentUser)
     }
     
-    func test_signout() throws {
+    func testSignout() throws {
         let viewModel = AuthViewModel(service: service)
         viewModel.signout()
         XCTAssertNil(viewModel.userSession)
