@@ -41,3 +41,7 @@ playground.xcworkspace
 fastlane/Preview.html
 fastlane/screenshots 
 fastlane/test_output 
+Pods
+build/Debug-iphonesimulator
+build/FoodGB.build
+build
