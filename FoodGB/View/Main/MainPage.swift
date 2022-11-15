@@ -17,18 +17,22 @@ enum TabBar: String, CaseIterable {
 struct MainPage: View {
     
     // MARK: - Properties
-    @State var currentTab: TabBar = .homePage
+    @Binding var currentTab: TabBar
     @Binding var buttonDisabled: Bool
     @Binding var user: User
     @Namespace var animation
     @StateObject var profileViewModel = ProfileViewModel()
     @StateObject var myFoodsViewModel = MyFoodsViewModel()
+    @StateObject var ordersViewModel: OrdersViewModel
     
     // MARK: - Views
     var body: some View {
         VStack(spacing: 0) {
             TabView(selection: $currentTab) {
-                HomePageView(buttonDisabled: $buttonDisabled, myFoodsviewModel: myFoodsViewModel, animation: animation)
+                HomePageView(buttonDisabled: $buttonDisabled,
+                             myFoodsviewModel: myFoodsViewModel,
+                             ordersViewModel: ordersViewModel,
+                             animation: animation)
                     .tag(TabBar.homePage)
                 
                 MyFoodsView(viewModel: myFoodsViewModel)

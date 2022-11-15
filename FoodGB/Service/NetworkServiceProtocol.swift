@@ -46,6 +46,32 @@ protocol NetworkServiceProtocol {
     
     
     // MARK: - Food functions
+    //  Функция меняет количество конкретного товара в корзине
+    /// - Parameters:
+    ///   - uid: индификатор пользователя.
+    ///   - id: индификатор продукта.
+    ///   - count: количество продукта.
+    func changeAmountFood(uid: String, id: String, count: String)
+    
+    //  Функция добовляеет `Food` в карзину
+    /// - Parameters:
+    ///   - food: Информация о пользователе полученная из `User`.
+    ///   - uid: индификатор пользователя.
+    ///   - id: индификатор продукта.
+    func addFoodCart(food: Food, uid: String, id: String)
+    
+    //  Функция получает массив [Food] из каталога foodsCart
+    /// - Parameters:
+    ///   - id: индификатор пользователя.
+    /// - Returns: Возвращает массив `[Food]` полученного  от `FireBaase`
+    func getFoodCart(id: String, complietion: @escaping (Result<[Food], Error>) -> Void)
+    
+    //  Функция удаляет продукт из корзины
+    /// - Parameters:
+    ///   - uid: индификатор пользователя.
+    ///   - id: индификатор продукта.
+    func deleteFoodCart(uid: String, id: String)
+    
     //  Функция запрашивает у баззы данных каталог с товарами
     /// - Returns: Возвращает  массив `Food` полученные  от `FireBaase`
     func getFoods(complietion: @escaping (Result<[Food], Error>) -> Void)

@@ -32,10 +32,10 @@ struct SideMenuView: View {
                               animation: animation,
                               selectedTab: $selectedTap)
                 
-                TapButtonMenu(image: "cart",
-                              title: "Orders",
-                              animation: animation,
-                              selectedTab: $selectedTap)
+//                TapButtonMenu(image: "cart",
+//                              title: "Orders",
+//                              animation: animation,
+//                              selectedTab: $selectedTap)
                 
                 TapButtonMenu(image: "tag",
                               title: "Offer and promo",

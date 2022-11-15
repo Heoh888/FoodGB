@@ -9,8 +9,9 @@ import FirebaseFirestoreSwift
 
 struct Food: Hashable, Identifiable, Decodable {
     var name: String
-    let description: String
+    let description: String?
     var foodImageUrl: String
-    var price: Int?
+    var price: String
+    var count: String?
     @DocumentID var id: String?
 }

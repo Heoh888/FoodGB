@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		57E02D31790209E2EC482129 /* libPods-FoodGBTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C5440FC01E71D4AD98C387 /* libPods-FoodGBTests.a */; };
+		86407EB12924102D007BF232 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86407EB02924102D007BF232 /* OrdersViewModel.swift */; };
+		86407EB429241D89007BF232 /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86407EB329241D89007BF232 /* OrdersCell.swift */; };
 		8659921F2900111100476617 /* ProfilleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659921E2900111100476617 /* ProfilleTextView.swift */; };
 		8659922029002AF100476617 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E756D828FFEC1400EE6A40 /* ContentView.swift */; };
 		865992242901A66100476617 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865992232901A66100476617 /* ImagePicker.swift */; };
@@ -127,6 +129,8 @@
 		44FC2E506922768504ADB409 /* libPods-FoodGB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodGB.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F68E05746568521C75E9495 /* Pods-FoodGB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodGB.release.xcconfig"; path = "Target Support Files/Pods-FoodGB/Pods-FoodGB.release.xcconfig"; sourceTree = "<group>"; };
 		6542BBEC84C7F6BC6B0E6E6D /* libPods-FoodGB-FoodGBUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodGB-FoodGBUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		86407EB02924102D007BF232 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
+		86407EB329241D89007BF232 /* OrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCell.swift; sourceTree = "<group>"; };
 		8659921E2900111100476617 /* ProfilleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilleTextView.swift; sourceTree = "<group>"; };
 		865992232901A66100476617 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		865992282902175900476617 /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
@@ -228,6 +232,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		86407EB229241D71007BF232 /* OrdersView */ = {
+			isa = PBXGroup;
+			children = (
+				86933D19290A9A9B00DE39C8 /* OrdersView.swift */,
+				86407EB329241D89007BF232 /* OrdersCell.swift */,
+			);
+			path = OrdersView;
+			sourceTree = "<group>";
+		};
 		8659922A2902191400476617 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,7 +280,6 @@
 				86933D092909BB3500DE39C8 /* DetailsFoodView.swift */,
 				86933D15290A99FC00DE39C8 /* SecurityView.swift */,
 				86933D17290A9A1400DE39C8 /* PrivacyPolicy.swift */,
-				86933D19290A9A9B00DE39C8 /* OrdersView.swift */,
 				86933D1B290A9AF900DE39C8 /* PromoView.swift */,
 			);
 			path = Other;
@@ -412,6 +424,7 @@
 		86E7570928FFED2F00EE6A40 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				86407EB229241D71007BF232 /* OrdersView */,
 				86B9DD59291F9F6600036273 /* MyFood */,
 				86933D21290AE15B00DE39C8 /* Home */,
 				86E7570F28FFEDDC00EE6A40 /* ProfilleUser */,
@@ -430,6 +443,7 @@
 				86E7572928FFF61000EE6A40 /* ProfileViewModel.swift */,
 				86E7572B28FFF62A00EE6A40 /* AuthViewModel.swift */,
 				86B9DD60291FF4D800036273 /* MyFoodsViewModel.swift */,
+				86407EB02924102D007BF232 /* OrdersViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -722,6 +736,7 @@
 			files = (
 				86933D11290A890600DE39C8 /* CustomCorners.swift in Sources */,
 				86E756E328FFEC1500EE6A40 /* FoodGB.xcdatamodeld in Sources */,
+				86407EB429241D89007BF232 /* OrdersCell.swift in Sources */,
 				865992292902175900476617 /* KeyboardAdaptive.swift in Sources */,
 				8686C6372911E34000D3FEC9 /* AsyncOperation.swift in Sources */,
 				86E756E028FFEC1500EE6A40 /* Persistence.swift in Sources */,
@@ -739,6 +754,7 @@
 				86E7571628FFF58000EE6A40 /* CustomTextField.swift in Sources */,
 				86933D14290A991F00DE39C8 /* SideMenuView.swift in Sources */,
 				86933D072909B97200DE39C8 /* MenuView.swift in Sources */,
+				86407EB12924102D007BF232 /* OrdersViewModel.swift in Sources */,
 				86E7571428FFF25B00EE6A40 /* UserModel.swift in Sources */,
 				8659922C2902193200476617 /* Extensions.swift in Sources */,
 				86E7571828FFF59100EE6A40 /* Constants.swift in Sources */,

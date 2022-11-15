@@ -15,6 +15,7 @@ struct HomePageView: View {
     @State var currentMenu = "Foods"
     @StateObject var viewModel = HomeViewModel()
     @StateObject var myFoodsviewModel: MyFoodsViewModel
+    @StateObject var ordersViewModel: OrdersViewModel
     
     var animation: Namespace.ID
     var menu = ["Foods", "Drinks", "Snacks", "Sushi", "Polls", "Pizza"]
@@ -64,7 +65,10 @@ struct HomePageView: View {
                 }
                 
                 // Carousel
-                FoodCarouselView(buttonDisabled: $buttonDisabled, viewModel: viewModel, myFoodsviewModel: myFoodsviewModel)
+                FoodCarouselView(buttonDisabled: $buttonDisabled,
+                                 viewModel: viewModel,
+                                 myFoodsviewModel: myFoodsviewModel,
+                                 ordersViewModel: ordersViewModel)
                 Spacer()
             }
             .padding(.top, 30)
