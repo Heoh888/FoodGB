@@ -32,8 +32,8 @@ class ProfileViewModel: ObservableObject {
                            phone: phone,
                            address: address,
                            image: image,
-                           id: id) { url, imare in
-            self.userImage = Image(uiImage: imare)
+                           id: id) { url, image in
+            self.userImage = Image(uiImage: image)
             self.urlImage = url
             AuthViewModel.shared.currentUser?.profileImageUrl = url
         }

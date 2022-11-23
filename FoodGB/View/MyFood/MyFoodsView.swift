@@ -28,15 +28,12 @@ struct MyFoodsView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     ForEach(viewModel.myFoods) { myFood in
                         MyFoodCell(viewModel: viewModel, myFood: myFood)
-                            .shadow(color: .gray.opacity(0.5), radius: 10)
-                            .padding(.horizontal)
                     }
                     .padding(.top)
                 }
 
                 Spacer()
             }
-            .padding(.horizontal)
             .padding(.top, 30)
         }
     }

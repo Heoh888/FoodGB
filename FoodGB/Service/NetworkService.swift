@@ -54,7 +54,6 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
     
-    // MARK: - Data functions
     func updateData(data: [String: String], id: String) {
         COLLECTION_USERS.document(id).updateData(data) { err in
             if let err = err {
@@ -93,6 +92,30 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
     
+    func createOrder(foods: [Food], uid: String, data: [String : String]) {
+        let fileName = NSUUID().uuidString
+        COLLECTION_ORDERS.document(uid).collection("order").document(fileName).setData(data) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                for food in foods {
+                    let foodData = ["foodImageUrl": food.foodImageUrl,
+                                    "name": food.name,
+                                    "price": food.price,
+                                    "count": food.count ?? "1"]
+                    COLLECTION_ORDERS.document(uid).collection("order").document(fileName).collection("foods").document().setData(foodData) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                        }
+                    }
+                }
+                print("Document successfully updated")
+            }
+        }
+    }
+    
     // MARK: - Food functions
     func changeAmountFood(uid: String, id: String, count: String) {
         let washingtonRef = COLLECTION_FOODSСART.document(uid).collection("foods").document(id)
@@ -120,6 +143,19 @@ final class NetworkService: NetworkServiceProtocol {
                 print("Error updating document: \(err)")
             } else {
                 print("Document successfully updated")
+            }
+        }
+    }
+    
+    func deleteFoodsCart(foods: [Food], uid: String) {
+        for food in foods {
+            guard let id = food.id else { break }
+            COLLECTION_FOODSСART.document(uid).collection("foods").document(id).delete() { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
             }
         }
     }
@@ -163,7 +199,7 @@ final class NetworkService: NetworkServiceProtocol {
             }
         }
     }
-        
+    
     func addMyFood(food: Food, uid: String, id: String) {
         
         let data = ["description": food.description ?? "",

@@ -10,6 +10,7 @@
 		57E02D31790209E2EC482129 /* libPods-FoodGBTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C5440FC01E71D4AD98C387 /* libPods-FoodGBTests.a */; };
 		86407EB12924102D007BF232 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86407EB02924102D007BF232 /* OrdersViewModel.swift */; };
 		86407EB429241D89007BF232 /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86407EB329241D89007BF232 /* OrdersCell.swift */; };
+		86407EB629251ED6007BF232 /* CheckoutOrdrersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86407EB529251ED6007BF232 /* CheckoutOrdrersView.swift */; };
 		8659921F2900111100476617 /* ProfilleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659921E2900111100476617 /* ProfilleTextView.swift */; };
 		8659922029002AF100476617 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E756D828FFEC1400EE6A40 /* ContentView.swift */; };
 		865992242901A66100476617 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865992232901A66100476617 /* ImagePicker.swift */; };
@@ -63,6 +64,19 @@
 		86B9DD6329215A5F00036273 /* MyFoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9DD5A291F9F8800036273 /* MyFoodsView.swift */; };
 		86B9DD6429215A5F00036273 /* MyFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9DD5E291FEDB700036273 /* MyFoodCell.swift */; };
 		86B9DD6529215AA600036273 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9DD5C291FE56F00036273 /* MainPage.swift */; };
+		86BAEF31292C1DC90071D1C3 /* CheckoutOrdrersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAEF30292C1DC90071D1C3 /* CheckoutOrdrersViewModel.swift */; };
+		86BAEF33292C1E410071D1C3 /* ModelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAEF32292C1E410071D1C3 /* ModelButton.swift */; };
+		86BAEF35292D7C530071D1C3 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAEF34292D7C530071D1C3 /* HistoryView.swift */; };
+		86BAEF39292D89020071D1C3 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAEF38292D89020071D1C3 /* RadioButton.swift */; };
+		86BAEF3A292D96FF0071D1C3 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86407EB02924102D007BF232 /* OrdersViewModel.swift */; };
+		86BAEF3B292D97020071D1C3 /* CheckoutOrdrersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAEF30292C1DC90071D1C3 /* CheckoutOrdrersViewModel.swift */; };
+		86BAEF3C292D970E0071D1C3 /* RadioBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5542129292370001B0D75 /* RadioBox.swift */; };
+		86BAEF3D292D97110071D1C3 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAEF38292D89020071D1C3 /* RadioButton.swift */; };
+		86BAEF3E292D97140071D1C3 /* CheckoutOrdrersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86407EB529251ED6007BF232 /* CheckoutOrdrersView.swift */; };
+		86BAEF3F292D97190071D1C3 /* ModelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAEF32292C1E410071D1C3 /* ModelButton.swift */; };
+		86BAEF40292D972A0071D1C3 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAEF34292D7C530071D1C3 /* HistoryView.swift */; };
+		86BAEF41292D973A0071D1C3 /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86407EB329241D89007BF232 /* OrdersCell.swift */; };
+		86C5542229292370001B0D75 /* RadioBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5542129292370001B0D75 /* RadioBox.swift */; };
 		86E2F9A7290592780066C795 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E7572728FFF60200EE6A40 /* StartView.swift */; };
 		86E2F9A92905928E0066C795 /* ProfilleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E7572128FFF5D900EE6A40 /* ProfilleView.swift */; };
 		86E2F9AA290592BA0066C795 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659922B2902193200476617 /* Extensions.swift */; };
@@ -131,6 +145,7 @@
 		6542BBEC84C7F6BC6B0E6E6D /* libPods-FoodGB-FoodGBUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodGB-FoodGBUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86407EB02924102D007BF232 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
 		86407EB329241D89007BF232 /* OrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCell.swift; sourceTree = "<group>"; };
+		86407EB529251ED6007BF232 /* CheckoutOrdrersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutOrdrersView.swift; sourceTree = "<group>"; };
 		8659921E2900111100476617 /* ProfilleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilleTextView.swift; sourceTree = "<group>"; };
 		865992232901A66100476617 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		865992282902175900476617 /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
@@ -160,6 +175,11 @@
 		86B9DD5C291FE56F00036273 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		86B9DD5E291FEDB700036273 /* MyFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFoodCell.swift; sourceTree = "<group>"; };
 		86B9DD60291FF4D800036273 /* MyFoodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFoodsViewModel.swift; sourceTree = "<group>"; };
+		86BAEF30292C1DC90071D1C3 /* CheckoutOrdrersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutOrdrersViewModel.swift; sourceTree = "<group>"; };
+		86BAEF32292C1E410071D1C3 /* ModelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelButton.swift; sourceTree = "<group>"; };
+		86BAEF34292D7C530071D1C3 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		86BAEF38292D89020071D1C3 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		86C5542129292370001B0D75 /* RadioBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioBox.swift; sourceTree = "<group>"; };
 		86E756D328FFEC1400EE6A40 /* FoodGB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodGB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E756D628FFEC1400EE6A40 /* FoodGBApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodGBApp.swift; sourceTree = "<group>"; };
 		86E756D828FFEC1400EE6A40 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -232,13 +252,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		86407EB229241D71007BF232 /* OrdersView */ = {
+		86407EB229241D71007BF232 /* Orders */ = {
 			isa = PBXGroup;
 			children = (
 				86933D19290A9A9B00DE39C8 /* OrdersView.swift */,
 				86407EB329241D89007BF232 /* OrdersCell.swift */,
 			);
-			path = OrdersView;
+			path = Orders;
 			sourceTree = "<group>";
 		};
 		8659922A2902191400476617 /* Extensions */ = {
@@ -281,6 +301,7 @@
 				86933D15290A99FC00DE39C8 /* SecurityView.swift */,
 				86933D17290A9A1400DE39C8 /* PrivacyPolicy.swift */,
 				86933D1B290A9AF900DE39C8 /* PromoView.swift */,
+				86BAEF34292D7C530071D1C3 /* HistoryView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -312,6 +333,24 @@
 				86B9DD5E291FEDB700036273 /* MyFoodCell.swift */,
 			);
 			path = MyFood;
+			sourceTree = "<group>";
+		};
+		86BAEF36292D88CA0071D1C3 /* CheckoutOrdrers */ = {
+			isa = PBXGroup;
+			children = (
+				86BAEF37292D88EC0071D1C3 /* RadioBox */,
+				86407EB529251ED6007BF232 /* CheckoutOrdrersView.swift */,
+			);
+			path = CheckoutOrdrers;
+			sourceTree = "<group>";
+		};
+		86BAEF37292D88EC0071D1C3 /* RadioBox */ = {
+			isa = PBXGroup;
+			children = (
+				86C5542129292370001B0D75 /* RadioBox.swift */,
+				86BAEF38292D89020071D1C3 /* RadioButton.swift */,
+			);
+			path = RadioBox;
 			sourceTree = "<group>";
 		};
 		86E756CA28FFEC1400EE6A40 = {
@@ -407,6 +446,7 @@
 			children = (
 				86E7571328FFF25B00EE6A40 /* UserModel.swift */,
 				86933CF82909B6E200DE39C8 /* FoodModel.swift */,
+				86BAEF32292C1E410071D1C3 /* ModelButton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -424,7 +464,8 @@
 		86E7570928FFED2F00EE6A40 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				86407EB229241D71007BF232 /* OrdersView */,
+				86BAEF36292D88CA0071D1C3 /* CheckoutOrdrers */,
+				86407EB229241D71007BF232 /* Orders */,
 				86B9DD59291F9F6600036273 /* MyFood */,
 				86933D21290AE15B00DE39C8 /* Home */,
 				86E7570F28FFEDDC00EE6A40 /* ProfilleUser */,
@@ -444,6 +485,7 @@
 				86E7572B28FFF62A00EE6A40 /* AuthViewModel.swift */,
 				86B9DD60291FF4D800036273 /* MyFoodsViewModel.swift */,
 				86407EB02924102D007BF232 /* OrdersViewModel.swift */,
+				86BAEF30292C1DC90071D1C3 /* CheckoutOrdrersViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -757,7 +799,10 @@
 				86407EB12924102D007BF232 /* OrdersViewModel.swift in Sources */,
 				86E7571428FFF25B00EE6A40 /* UserModel.swift in Sources */,
 				8659922C2902193200476617 /* Extensions.swift in Sources */,
+				86BAEF31292C1DC90071D1C3 /* CheckoutOrdrersViewModel.swift in Sources */,
 				86E7571828FFF59100EE6A40 /* Constants.swift in Sources */,
+				86407EB629251ED6007BF232 /* CheckoutOrdrersView.swift in Sources */,
+				86C5542229292370001B0D75 /* RadioBox.swift in Sources */,
 				86E756D928FFEC1400EE6A40 /* ContentView.swift in Sources */,
 				8659921F2900111100476617 /* ProfilleTextView.swift in Sources */,
 				8686C6352911E2DA00D3FEC9 /* UplouderDataOperation.swift in Sources */,
@@ -766,16 +811,19 @@
 				867A10C9290BF23F00CB000E /* FoodCarouselView.swift in Sources */,
 				86E7572A28FFF61000EE6A40 /* ProfileViewModel.swift in Sources */,
 				86E7572228FFF5D900EE6A40 /* ProfilleView.swift in Sources */,
+				86BAEF35292D7C530071D1C3 /* HistoryView.swift in Sources */,
 				86933D0F290A857C00DE39C8 /* TapButtonMenu.swift in Sources */,
 				86E7572028FFF5CD00EE6A40 /* AuthView.swift in Sources */,
 				86E7572C28FFF62A00EE6A40 /* AuthViewModel.swift in Sources */,
 				86933D1E290A9C0400DE39C8 /* PreviewView.swift in Sources */,
 				86933D18290A9A1400DE39C8 /* PrivacyPolicy.swift in Sources */,
 				86B9DD5F291FEDB700036273 /* MyFoodCell.swift in Sources */,
+				86BAEF33292C1E410071D1C3 /* ModelButton.swift in Sources */,
 				86B9DD5D291FE56F00036273 /* MainPage.swift in Sources */,
 				86E7572428FFF5E300EE6A40 /* UpdateProfilleView.swift in Sources */,
 				86E7571E28FFF5C100EE6A40 /* RegistrationView.swift in Sources */,
 				867A10C7290AE79C00CB000E /* HomePageView.swift in Sources */,
+				86BAEF39292D89020071D1C3 /* RadioButton.swift in Sources */,
 				86B9DD61291FF4D800036273 /* MyFoodsViewModel.swift in Sources */,
 				86E7572828FFF60200EE6A40 /* StartView.swift in Sources */,
 			);
@@ -786,6 +834,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				868AB234290F0E1A00FBA7E2 /* NetworkService.swift in Sources */,
+				86BAEF3E292D97140071D1C3 /* CheckoutOrdrersView.swift in Sources */,
 				867B64FE2916CEBA00367BD0 /* UplouderDataOperation.swift in Sources */,
 				867B64FD2916CEBA00367BD0 /* AsyncOperation.swift in Sources */,
 				86B9DD6529215AA600036273 /* MainPage.swift in Sources */,
@@ -797,6 +846,7 @@
 				86E756ED28FFEC1500EE6A40 /* FoodGBTests.swift in Sources */,
 				868AB23C290F0E3200FBA7E2 /* PromoView.swift in Sources */,
 				86E2F9B0290592D50066C795 /* AuthView.swift in Sources */,
+				86BAEF3B292D97020071D1C3 /* CheckoutOrdrersViewModel.swift in Sources */,
 				868AB237290F0E2800FBA7E2 /* SideMenuView.swift in Sources */,
 				86E2F9B1290592D90066C795 /* RegistrationView.swift in Sources */,
 				86E2F9A92905928E0066C795 /* ProfilleView.swift in Sources */,
@@ -809,6 +859,7 @@
 				867B64FC2916CEBA00367BD0 /* ImageUploaderOperation.swift in Sources */,
 				868AB235290F0E1F00FBA7E2 /* HomePageView.swift in Sources */,
 				868AB23A290F0E3200FBA7E2 /* PrivacyPolicy.swift in Sources */,
+				86BAEF41292D973A0071D1C3 /* OrdersCell.swift in Sources */,
 				868AB241290F0E4000FBA7E2 /* FoodModel.swift in Sources */,
 				86E2F9B3290592E10066C795 /* ProfilleTextView.swift in Sources */,
 				86E2F9B2290592D90066C795 /* LoginView.swift in Sources */,
@@ -817,10 +868,14 @@
 				868AB243290F47D100FBA7E2 /* MockNetworkService.swift in Sources */,
 				86E2F9AE290592CA0066C795 /* ImagePicker.swift in Sources */,
 				86E2F9AA290592BA0066C795 /* Extensions.swift in Sources */,
+				86BAEF3C292D970E0071D1C3 /* RadioBox.swift in Sources */,
 				86E2F9AC290592C20066C795 /* Constants.swift in Sources */,
 				86B9DD6429215A5F00036273 /* MyFoodCell.swift in Sources */,
+				86BAEF3F292D97190071D1C3 /* ModelButton.swift in Sources */,
+				86BAEF3A292D96FF0071D1C3 /* OrdersViewModel.swift in Sources */,
 				868AB23E290F0E3200FBA7E2 /* DetailsFoodView.swift in Sources */,
 				86E2F9BA290593950066C795 /* FoodGB.xcdatamodeld in Sources */,
+				86BAEF3D292D97110071D1C3 /* RadioButton.swift in Sources */,
 				86B9DD6329215A5F00036273 /* MyFoodsView.swift in Sources */,
 				86E2F9B4290592E10066C795 /* UpdateProfilleView.swift in Sources */,
 				868AB23B290F0E3200FBA7E2 /* OrdersView.swift in Sources */,
@@ -828,6 +883,7 @@
 				86E2F9B6290592F80066C795 /* UserModel.swift in Sources */,
 				868AB238290F0E2800FBA7E2 /* TapButtonMenu.swift in Sources */,
 				86E2F9AD290592C60066C795 /* Persistence.swift in Sources */,
+				86BAEF40292D972A0071D1C3 /* HistoryView.swift in Sources */,
 				8686C63A291205E000D3FEC9 /* NetworkServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

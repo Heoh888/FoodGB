@@ -39,11 +39,8 @@ struct PreviewView: View {
             ProfilleView(user: $user, viewModel: viewModel)
                 .tag("Profile")
 
-//            OrdersView(selrctedTap: $selrctedTap, currentTab: $currentTab)
-//                .tag("Orders")
-
-            PromoView()
-                .tag("Offer and promo")
+            HistoryView()
+                .tag("Order history")
 
             PrivacyPolicy()
                 .tag("Privacy policy")

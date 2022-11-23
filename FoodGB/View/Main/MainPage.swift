@@ -10,7 +10,7 @@ import SwiftUI
 enum TabBar: String, CaseIterable {
     case homePage = "house"
     case likedPage = "heart"
-    case profilePage = "person"
+    case tagPage = "tag"
     case inPprocessing = "timer.circle"
 }
 
@@ -21,7 +21,6 @@ struct MainPage: View {
     @Binding var buttonDisabled: Bool
     @Binding var user: User
     @Namespace var animation
-    @StateObject var profileViewModel = ProfileViewModel()
     @StateObject var myFoodsViewModel = MyFoodsViewModel()
     @StateObject var ordersViewModel: OrdersViewModel
     
@@ -38,10 +37,10 @@ struct MainPage: View {
                 MyFoodsView(viewModel: myFoodsViewModel)
                     .tag(TabBar.likedPage)
                 
-                ProfilleView(user: $user, viewModel: profileViewModel)
-                    .tag(TabBar.profilePage)
+                PromoView()
+                    .tag(TabBar.tagPage)
                 
-                Text("Cart")
+                HistoryView()
                     .tag(TabBar.inPprocessing)
             }
             

@@ -57,10 +57,12 @@ struct OrdersCell: View {
         ZStack {
             HStack{
                 Button {
-                    if Int(food.count ?? "1")! <= 1 {
-                        viewModel.deleteFoodCart(food: food)
-                    } else {
-                        viewModel.changeAmountFood(food: food, value: .less)
+                    withAnimation(.spring()) {
+                        if Int(food.count ?? "1")! <= 1 {
+                            viewModel.deleteFoodCart(food: food)
+                        } else {
+                            viewModel.changeAmountFood(food: food, value: .less)
+                        }
                     }
                 } label: {
                     Text("-")

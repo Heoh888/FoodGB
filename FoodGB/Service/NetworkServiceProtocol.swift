@@ -44,6 +44,11 @@ protocol NetworkServiceProtocol {
     /// - Returns: Возвращает url картинки пользователя полученного  от `FireBaase`
     func uploaderImage(image: UIImage, completion: @escaping(String) -> Void)
     
+    //  Функция создает закааз и созраняет его в базу
+    /// - Parameters:
+    ///   - foods: массив с продуктами.
+    ///   - uid: индификатор пользователя.
+    func createOrder(foods: [Food], uid: String, data: [String : String])
     
     // MARK: - Food functions
     //  Функция меняет количество конкретного товара в корзине
@@ -55,10 +60,16 @@ protocol NetworkServiceProtocol {
     
     //  Функция добовляеет `Food` в карзину
     /// - Parameters:
-    ///   - food: Информация о пользователе полученная из `User`.
+    ///   - food: продукт.
     ///   - uid: индификатор пользователя.
     ///   - id: индификатор продукта.
     func addFoodCart(food: Food, uid: String, id: String)
+    
+    //  Функция удаляет карзину пользователя
+    /// - Parameters:
+    ///   - foods: массив с продуктами.
+    ///   - uid: индификатор пользователя.
+    func deleteFoodsCart(foods: [Food], uid: String)
     
     //  Функция получает массив [Food] из каталога foodsCart
     /// - Parameters:
@@ -78,7 +89,7 @@ protocol NetworkServiceProtocol {
     
     //  Функция добовляеет `Food` в избранное
     /// - Parameters:
-    ///   - food: Информация о пользователе полученная из `User`.
+    ///   - food: продукт.
     ///   - uid: индификатор пользователя.
     ///   - id: индификатор продукта.
     func addMyFood(food: Food, uid: String, id: String)

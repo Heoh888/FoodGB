@@ -17,6 +17,20 @@ struct MenuView: View {
     @State var user: User
     @StateObject var ordersViewModel = OrdersViewModel()
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    // MARK: - NavigationBar
+    var btnBack : some View {
+        Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "chevron.backward")
+                .scaleEffect(0.8)
+                .foregroundColor(.black)
+        }
+        .padding(.leading, 25)
+    }
+    
     // MARK: - Views
     var body: some View {
         NavigationView {
@@ -86,18 +100,21 @@ struct MenuView: View {
                         Spacer()
                         if !showMainMenu {
                             NavigationLink {
-                                OrdersView(ordersViewModel: ordersViewModel, selrctedTap: $selectedTap, currentTab: $currentTab)
+                                OrdersView(ordersViewModel: ordersViewModel,
+                                           selrctedTap: $selectedTap,
+                                           currentTab: $currentTab)
+                                .navigationBarTitle(Text("Cart"))
                             } label: {
                                 Image(systemName: "cart")
                                     .font(.system(.title2))
                                     .foregroundColor(.black)
                                     .padding(.trailing)
                             }
+
                         }
                         
                     },
                     alignment: .topLeading)
-                
             }
         }
     }
