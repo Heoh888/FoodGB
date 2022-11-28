@@ -10,34 +10,46 @@ import SwiftUI
 struct PreviewView: View {
     
     // MARK: - Properties
+    @Binding var currentTab: TabBar
     @Binding var selrctedTap: String
     @Binding var user: User
     @Binding var buttonDisabled: Bool
+    @Binding var searchActivated: Bool
+    @ObservedObject var ordersViewModel: OrdersViewModel
     @StateObject var viewModel = ProfileViewModel()
     
     // MARK: - Initialisation
-    init(selrctedTap: Binding<String>,  user: Binding<User>, buttonDisabled: Binding<Bool>) {
+    init(currentTab: Binding<TabBar>,
+         selrctedTap: Binding<String>,
+         user: Binding<User>,
+         searchActivated: Binding<Bool>,
+         buttonDisabled: Binding<Bool>,
+         ordersViewModel: OrdersViewModel) {
         UITabBar.appearance().isHidden = true
+        self._currentTab = currentTab
         self._selrctedTap = selrctedTap
         self._user = user
         self._buttonDisabled = buttonDisabled
+        self._searchActivated = searchActivated
+        self.ordersViewModel = ordersViewModel
     }
     
     // MARK: - Views
     var body: some View {
         TabView(selection: $selrctedTap) {
 
-            MainPage(buttonDisabled: $buttonDisabled, user: $user)
+            MainPage(currentTab: $currentTab,
+                     buttonDisabled: $buttonDisabled,
+                     searchActivated: $searchActivated,
+                     user: $user,
+                     ordersViewModel:  ordersViewModel)
                 .tag("Main")
 
             ProfilleView(user: $user, viewModel: viewModel)
                 .tag("Profile")
 
-            OrdersView()
-                .tag("Orders")
-
-            PromoView()
-                .tag("Offer and promo")
+            HistoryView()
+                .tag("Order history")
 
             PrivacyPolicy()
                 .tag("Privacy policy")
@@ -45,6 +57,5 @@ struct PreviewView: View {
             SecurityView()
                 .tag("Security")
         }
-        
     }
 }

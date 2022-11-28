@@ -14,23 +14,24 @@ class MyFoodsViewModel: ObservableObject {
     @Published var myFoods: [Food] = []
     @Published var error: Error?
     
+    var uid: String = ""
+    
     // MARK: - Private properties
-    let service: NetworkServiceProtocol!
+    private let service: NetworkServiceProtocol!
     
     // MARK: - Initialisation
-    init(service: NetworkServiceProtocol = NetworkService()) {
+    init(service: NetworkServiceProtocol = NetworkService(), uid: String = "") {
         self.service = service
-        getMyFoods()
+        self.uid = AuthViewModel.shared.currentUser?.id ?? ""
+        self.getMyFoods()
     }
     
     func deleteMyFoods(id: String) {
-        guard let uid = AuthViewModel.shared.currentUser?.id else { return }
         service.deleteMyFoods(uid: uid, id: id)
         getMyFoods()
     }
     
     func addMyFood(food: Food) {
-        guard let uid = AuthViewModel.shared.currentUser?.id else { return }
         service.addMyFood(food: food, uid: uid, id: food.id!)
         getMyFoods()
     }
@@ -42,7 +43,6 @@ class MyFoodsViewModel: ObservableObject {
     
     // MARK: - Private properties
     private func getMyFoods() {
-         guard let uid = AuthViewModel.shared.currentUser?.id else { return }
          service.getMyFood(id: uid) { [weak self] result in
              guard let self = self else { return }
              switch result {

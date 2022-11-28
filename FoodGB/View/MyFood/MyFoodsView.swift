@@ -15,7 +15,7 @@ struct MyFoodsView: View {
     // MARK: - Views
     var body: some View {
         ZStack(alignment: .leading) {
-            Color("Background")
+            Color("Background_2")
                 .ignoresSafeArea()
             
             VStack(alignment: .leading) {
@@ -28,12 +28,12 @@ struct MyFoodsView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     ForEach(viewModel.myFoods) { myFood in
                         MyFoodCell(viewModel: viewModel, myFood: myFood)
-                            .padding(.horizontal)
                     }
+                    .padding(.top)
                 }
+
                 Spacer()
             }
-            .padding(.horizontal)
             .padding(.top, 30)
         }
     }

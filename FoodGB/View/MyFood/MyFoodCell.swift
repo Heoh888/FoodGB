@@ -18,19 +18,21 @@ struct MyFoodCell: View {
     // MARK: - Views
     var body: some View {
         ZStack(alignment: .leading) {
-            Capsule()
+            Rectangle()
                 .frame(height: 100)
                 .foregroundColor(.white)
+                .cornerRadius(20)
             HStack {
                 KFImage(URL(string: myFood.foodImageUrl))
                     .resizable()
-                    .frame(width: 110, height: 110)
+                    .frame(width: 70, height: 70)
                     .offset(x: -5)
+                    .shadow(color: .gray.opacity(0.5), radius: 4)
                 
                 Text(myFood.name)
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundColor(.black)
-                    .frame(width: 130)
+                
                 Spacer()
                 
                 Button {
@@ -39,9 +41,11 @@ struct MyFoodCell: View {
                     Image(systemName: "heart.fill")
                         .scaleEffect(1.3)
                         .foregroundColor(Color("MainColor"))
-                        .padding(.trailing, 50)
+                        .padding(.trailing, 30)
                 }
             }
+            .padding(.horizontal)
         }
+        .padding(.horizontal, 30)
     }
 }

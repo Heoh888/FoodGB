@@ -16,24 +16,21 @@ struct ContentView: View {
     
     // MARK: - Views
     var body: some View {
-        Group {
-            if viewModel.userSession == nil {
-                if starteed {
-                    StartView(starteed: $starteed)
+        VStack {
+            Group {
+                if viewModel.userSession == nil {
+                    if starteed {
+                        StartView(starteed: $starteed)
+                    } else {
+                        AuthView()
+                    }
                 } else {
-                    AuthView()
-                }
-            } else {
-                if let user = viewModel.currentUser {
-                    MenuView(user: user)
+                    if let user = viewModel.currentUser {
+                        MenuView(user: user)
+                    }
                 }
             }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}

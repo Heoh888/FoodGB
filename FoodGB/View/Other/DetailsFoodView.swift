@@ -14,7 +14,9 @@ struct DetailsFoodView: View {
     @State var like = false
     var food: Food
     @StateObject var myFoodsViewModel: MyFoodsViewModel
+    @StateObject var ordersViewModel: OrdersViewModel
     @Environment(\.presentationMode) var presentationMode
+    
     
     // MARK: - Views
     var body: some View {
@@ -27,7 +29,6 @@ struct DetailsFoodView: View {
             VStack {
                 HStack {
                     Image(systemName: "chevron.backward")
-                        .scaleEffect(1.3)
                         .onTapGesture {
                             presentationMode.wrappedValue.dismiss()
                         }
@@ -64,7 +65,7 @@ struct DetailsFoodView: View {
                 
                 // TODO: Нормально развернуть опционал
                 // Лучше если нет цены то и не отображать во все
-                Text("\(food.price ?? 0) $")
+                Text("\(food.price) $")
                     .font(.system(size: 28, weight: .semibold))
                     .foregroundColor(Color("MainColor"))
                     .padding()
@@ -75,7 +76,7 @@ struct DetailsFoodView: View {
                         .padding(.top)
                         .padding(.bottom, 3)
                     
-                    Text(food.description)
+                    Text(food.description ?? "")
                         .font(.system(size: 15))
                         .foregroundColor(.gray)
                 }
@@ -83,7 +84,8 @@ struct DetailsFoodView: View {
                 Spacer()
                 
                 Button {
-                    
+                    ordersViewModel.addFoodCart(food: food)
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Add to cart")
                         .font(.system(size: 17, weight: .semibold))

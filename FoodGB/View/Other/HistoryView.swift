@@ -1,15 +1,13 @@
 //
-//  PromoView.swift
+//  HistoryView.swift
 //  FoodGB
 //
-//  Created by Алексей Ходаков on 27.10.2022.
+//  Created by Алексей Ходаков on 23.11.2022.
 //
 
 import SwiftUI
 
-struct PromoView: View {
-    
-    // MARK: - Views
+struct HistoryView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             Color("Background_2")
@@ -17,7 +15,7 @@ struct PromoView: View {
             
             VStack(alignment: .leading) {
                 
-                Text("Offer and promo")
+                Text("History")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.top, 60)
@@ -28,8 +26,8 @@ struct PromoView: View {
     }
 }
 
-struct PromoView_Previews: PreviewProvider {
+struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        PromoView()
+        HistoryView()
     }
 }
