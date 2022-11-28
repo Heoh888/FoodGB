@@ -24,7 +24,7 @@ struct FoodCarouselView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 35) {
-                ForEach(viewModel.foods) { food in
+                ForEach(viewModel.filteredFoods) { food in
                     Button(action: {
                         selectedData = food
                     }, label: {

@@ -11,21 +11,18 @@ struct HomePageView: View {
     
     // MARK: - Properties
     @Binding var buttonDisabled: Bool
+    @Binding var searchActivated: Bool
     @State var search = ""
-    @State var currentMenu = "Foods"
+    @State var currentMenu = "All"
     @StateObject var viewModel = HomeViewModel()
     @StateObject var myFoodsviewModel: MyFoodsViewModel
     @StateObject var ordersViewModel: OrdersViewModel
     
     var animation: Namespace.ID
-    var menu = ["Foods", "Drinks", "Snacks", "Sushi", "Polls", "Pizza"]
     
     // MARK: - Views
     var body: some View {
-        ZStack(alignment: .leading) {
-            Color("Background")
-                .ignoresSafeArea()
-            
+        ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading) {
                 Text("Delicious food for you")
                     .font(.title)
@@ -36,26 +33,26 @@ struct HomePageView: View {
                 
                 // Search
                 ZStack {
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .padding(.leading, 30)
-                        TextField("Search", text: $search)
+                    if viewModel.searchActivated {
+                        searchbar()
+                    } else {
+                        searchbar()
+                            .matchedGeometryEffect(id: "SEARCHBAR", in: animation)
                     }
-                    .background {
-                        Rectangle()
-                            .foregroundColor(.gray.opacity(0.08))
-                            .frame(height: 50)
-                            .cornerRadius(50)
-                    }
-                    .frame(width: getRect().width - 60)
                 }
                 .padding(.horizontal, 30)
                 .padding(.top, 30)
+                .onTapGesture {
+                    withAnimation(.easeInOut) {
+                        viewModel.searchActivated = true
+                    }
+                    searchActivated = true
+                }
                 
                 // Tap bar
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(menu, id: \.self) { food in
+                        ForEach(viewModel.typeFoods, id: \.self) { food in
                             foodCategory(food: food)
                         }
                     }
@@ -69,10 +66,36 @@ struct HomePageView: View {
                                  viewModel: viewModel,
                                  myFoodsviewModel: myFoodsviewModel,
                                  ordersViewModel: ordersViewModel)
-                Spacer()
             }
-            .padding(.top, 30)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.top, 30)
+        .background(Color("Background_2"))
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+        .overlay(
+            ZStack {
+                if viewModel.searchActivated {
+                    SearchView(searchActivated: $searchActivated, animation: animation)
+                        .environmentObject(viewModel)
+                }
+            }
+        )
+    }
+    
+    @ViewBuilder
+    func searchbar() -> some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+                .padding(.leading, 30)
+            TextField("Search", text: $search)
+        }
+        .background {
+            Rectangle()
+                .foregroundColor(.gray.opacity(0.08))
+                .frame(height: 50)
+                .cornerRadius(50)
+        }
+        .frame(width: getRect().width - 60)
     }
     
     // MARK: - ViewBuilder
@@ -97,7 +120,9 @@ struct HomePageView: View {
                     withAnimation(.easeInOut) {
                         currentMenu = food
                     }
+                    viewModel.filteredFoodsByType(type: currentMenu)
                 }
         }
     }
 }
+

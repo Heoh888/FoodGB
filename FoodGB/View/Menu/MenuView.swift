@@ -15,6 +15,7 @@ struct MenuView: View {
     @State var showMainMenu = false
     @State var buttonDisabled = false
     @State var user: User
+    @State var searchActivated = false
     @StateObject var ordersViewModel = OrdersViewModel()
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -51,6 +52,7 @@ struct MenuView: View {
                     PreviewView(currentTab: $currentTab,
                                 selrctedTap: $selectedTap,
                                 user: $user,
+                                searchActivated: $searchActivated,
                                 buttonDisabled: $buttonDisabled,
                                 ordersViewModel: ordersViewModel)
                     .cornerRadius(showMainMenu ? 50 : 0)
@@ -68,51 +70,52 @@ struct MenuView: View {
                 .ignoresSafeArea()
                 .overlay(
                     HStack{
-                        Button(action: {
-                            withAnimation(.spring()) {
-                                showMainMenu.toggle()
-                                buttonDisabled.toggle()
-                            }
-                        }, label: {
-                            VStack(alignment: .leading, spacing: 5) {
-                                Capsule()
-                                    .fill(showMainMenu ? Color.white : Color.primary)
-                                    .frame(width: 30, height: 3)
-                                    .rotationEffect(.init(degrees: showMainMenu ? -50 : 0))
-                                    .offset(x: showMainMenu ? 0 : 0,
-                                            y: showMainMenu ? 8 : 0)
-                                
+                        if !searchActivated {
+                            Button(action: {
+                                withAnimation(.spring()) {
+                                    showMainMenu.toggle()
+                                    buttonDisabled.toggle()
+                                }
+                            }, label: {
                                 VStack(alignment: .leading, spacing: 5) {
-                                    if !showMainMenu {
-                                        Capsule()
-                                            .fill(showMainMenu ? Color.white : Color.primary)
-                                            .frame(width: 20, height: 3)
-                                    }
                                     Capsule()
                                         .fill(showMainMenu ? Color.white : Color.primary)
                                         .frame(width: 30, height: 3)
+                                        .rotationEffect(.init(degrees: showMainMenu ? -50 : 0))
+                                        .offset(x: showMainMenu ? 0 : 0,
+                                                y: showMainMenu ? 8 : 0)
+                                    
+                                    VStack(alignment: .leading, spacing: 5) {
+                                        if !showMainMenu {
+                                            Capsule()
+                                                .fill(showMainMenu ? Color.white : Color.primary)
+                                                .frame(width: 20, height: 3)
+                                        }
+                                        Capsule()
+                                            .fill(showMainMenu ? Color.white : Color.primary)
+                                            .frame(width: 30, height: 3)
+                                    }
+                                    .rotationEffect(.init(degrees: showMainMenu ? 50 : 0))
                                 }
-                                .rotationEffect(.init(degrees: showMainMenu ? 50 : 0))
+                            })
+                            .padding()
+                            
+                            Spacer()
+                            if !showMainMenu {
+                                NavigationLink {
+                                    OrdersView(ordersViewModel: ordersViewModel,
+                                               selrctedTap: $selectedTap,
+                                               currentTab: $currentTab)
+                                    .navigationBarTitle(Text("Cart"))
+                                } label: {
+                                    Image(systemName: "cart")
+                                        .font(.system(.title2))
+                                        .foregroundColor(.black)
+                                        .padding(.trailing)
+                                }
+                                
                             }
-                        })
-                        .padding()
-                        
-                        Spacer()
-                        if !showMainMenu {
-                            NavigationLink {
-                                OrdersView(ordersViewModel: ordersViewModel,
-                                           selrctedTap: $selectedTap,
-                                           currentTab: $currentTab)
-                                .navigationBarTitle(Text("Cart"))
-                            } label: {
-                                Image(systemName: "cart")
-                                    .font(.system(.title2))
-                                    .foregroundColor(.black)
-                                    .padding(.trailing)
-                            }
-
                         }
-                        
                     },
                     alignment: .topLeading)
             }

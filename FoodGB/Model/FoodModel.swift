@@ -13,5 +13,6 @@ struct Food: Hashable, Identifiable, Decodable {
     var foodImageUrl: String
     var price: String
     var count: String?
+    var type: String?
     @DocumentID var id: String?
 }

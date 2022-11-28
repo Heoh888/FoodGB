@@ -9,7 +9,6 @@ import Foundation
 
 class CheckoutOrdrersViewModel: ObservableObject {
     
-    
     // MARK: - Properties
     @Published var ditails = ["Payment method": "Card", "Deviliry": "To the door"]
     @Published var warning: String = ""

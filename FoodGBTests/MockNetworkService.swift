@@ -56,7 +56,8 @@ class MockNetworkService: NetworkServiceProtocol {
         complietion(.success([Food(name: "TestFood",
                                    description: "TestFood",
                                    foodImageUrl: "TestFood",
-                                   price: "1")]))
+                                   price: "1",
+                                   type: "Food")]))
     }
     
     func getUser(id: String,

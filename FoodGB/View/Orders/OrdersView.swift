@@ -97,7 +97,23 @@ struct OrdersView: View {
     @ViewBuilder
     func bottonCart() -> some View {
         HStack(alignment: .center) {
-            if !ordersViewModel.foodsCart.isEmpty {
+            if ordersViewModel.foodsCart.isEmpty {
+                Button {
+                    if ordersViewModel.foodsCart.isEmpty {
+                        selrctedTap = "Home"
+                        currentTab = .homePage
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                } label: {
+                    Text(ordersViewModel.foodsCart.isEmpty ? "Start odering" : "Go")
+                        .font(.system(size: 17, weight: .semibold))
+                        .fontWeight(.bold)
+                        .frame(width: ordersViewModel.foodsCart.isEmpty ? 314 : 70, height: 70)
+                        .background(Color("MainColor"))
+                        .foregroundColor(Color.white)
+                        .cornerRadius(30)
+                }
+            } else {
                 ZStack(alignment: .center) {
                     Rectangle()
                         .frame(height: 70)
@@ -116,26 +132,6 @@ struct OrdersView: View {
                     }
                 }
                 
-                Spacer()
-            }
-            
-            if ordersViewModel.foodsCart.isEmpty {
-                Button {
-                    if ordersViewModel.foodsCart.isEmpty {
-                        selrctedTap = "Home"
-                        currentTab = .homePage
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-                } label: {
-                    Text(ordersViewModel.foodsCart.isEmpty ? "Start odering" : "Go")
-                        .font(.system(size: 17, weight: .semibold))
-                        .fontWeight(.bold)
-                        .frame(width: ordersViewModel.foodsCart.isEmpty ? 314 : 70, height: 70)
-                        .background(Color("MainColor"))
-                        .foregroundColor(Color.white)
-                        .cornerRadius(30)
-                }
-            } else {
                 NavigationLink {
                     CheckoutOrdrersView(ordersViewModel: ordersViewModel,
                                         selrctedTap: $selrctedTap,

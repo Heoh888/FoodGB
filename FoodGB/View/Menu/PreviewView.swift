@@ -14,16 +14,23 @@ struct PreviewView: View {
     @Binding var selrctedTap: String
     @Binding var user: User
     @Binding var buttonDisabled: Bool
+    @Binding var searchActivated: Bool
     @ObservedObject var ordersViewModel: OrdersViewModel
     @StateObject var viewModel = ProfileViewModel()
     
     // MARK: - Initialisation
-    init(currentTab: Binding<TabBar>, selrctedTap: Binding<String>,  user: Binding<User>, buttonDisabled: Binding<Bool>, ordersViewModel: OrdersViewModel) {
+    init(currentTab: Binding<TabBar>,
+         selrctedTap: Binding<String>,
+         user: Binding<User>,
+         searchActivated: Binding<Bool>,
+         buttonDisabled: Binding<Bool>,
+         ordersViewModel: OrdersViewModel) {
         UITabBar.appearance().isHidden = true
         self._currentTab = currentTab
         self._selrctedTap = selrctedTap
         self._user = user
         self._buttonDisabled = buttonDisabled
+        self._searchActivated = searchActivated
         self.ordersViewModel = ordersViewModel
     }
     
@@ -32,7 +39,9 @@ struct PreviewView: View {
         TabView(selection: $selrctedTap) {
 
             MainPage(currentTab: $currentTab,
-                     buttonDisabled: $buttonDisabled, user: $user,
+                     buttonDisabled: $buttonDisabled,
+                     searchActivated: $searchActivated,
+                     user: $user,
                      ordersViewModel:  ordersViewModel)
                 .tag("Main")
 
@@ -48,6 +57,5 @@ struct PreviewView: View {
             SecurityView()
                 .tag("Security")
         }
-        
     }
 }
