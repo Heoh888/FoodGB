@@ -10,6 +10,7 @@ import SwiftUI
 
 struct OrdersView: View {
 
+    // MARK: - Properties
     @StateObject var ordersViewModel: OrdersViewModel
     @Binding var selrctedTap: String
     @Binding var currentTab: TabBar

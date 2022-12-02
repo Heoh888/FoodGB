@@ -10,6 +10,29 @@ import SwiftUI
 @testable import FoodGB
 
 class MockNetworkService: NetworkServiceProtocol {
+    func getOrderDetails(uid: String, complietion: @escaping ([OrdersModel]) -> Void) {
+        
+    }
+    
+    func getOrders(uid: String, complietion:  @escaping ([OrdersModel]) -> Void) {
+        complietion([OrdersModel(userName: "Test",
+                                 address: "Test",
+                                 phone: "Test",
+                                 total: "Test",
+                                 data: "Test",
+                                 deviliry: "Test",
+                                 paymentMethod: "Test")])
+    }
+    
+    func getFoodsOrder(uid: String, id: String, complietion: @escaping ([Food]) -> Void) {
+        complietion([Food(name: "TestFood",
+                          description: "TestFood",
+                          foodImageUrl: "TestFood",
+                          price: "1",
+                          count: "1",
+                          id: "test")])
+    }
+    
     func createOrder(foods: [Food], uid: String, data: [String : String]) {}
     
     func changeAmountFood(uid: String, id: String, count: String) {}
@@ -51,7 +74,7 @@ class MockNetworkService: NetworkServiceProtocol {
     func loadImage(url: String, complietion: @escaping (Image) -> ()) {
         complietion(Image("userImage"))
     }
-
+    
     func getFoods(complietion: @escaping (Result<[Food], Error>) -> Void) {
         complietion(.success([Food(name: "TestFood",
                                    description: "TestFood",
@@ -76,13 +99,13 @@ class MockNetworkService: NetworkServiceProtocol {
                   complietion: @escaping (Result<FirebaseAuth.User?, Error>) -> Void) {}
     
     func signout() {}
-   
+    
     func updateUser(userName: String,
                     phone: String,
                     address: String,
                     image: UIImage?,
                     complition: @escaping (String) -> ()) {}
-        
+    
     func updateData(data: [String: String], id: String) {}
     
     func uploaderImage(image: UIImage,

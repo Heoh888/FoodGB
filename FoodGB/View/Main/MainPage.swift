@@ -42,7 +42,7 @@ struct MainPage: View {
                 PromoView()
                     .tag(TabBar.tagPage)
                 
-                HistoryView()
+                OrderHistoryView()
                     .tag(TabBar.inPprocessing)
             }
             
