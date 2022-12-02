@@ -10,26 +10,53 @@ import SwiftUI
 @testable import FoodGB
 
 class MockNetworkService: NetworkServiceProtocol {
+    func createOrder(foods: [Food], uid: String, data: [String : String]) {}
+    
+    func changeAmountFood(uid: String, id: String, count: String) {}
+    
+    func addFoodCart(food: Food, uid: String, id: String) {}
+    
+    func deleteFoodsCart(foods: [Food], uid: String) {}
+    
+    func getFoodCart(id: String, complietion: @escaping (Result<[Food], Error>) -> Void) {
+        complietion(.success([Food(name: "TestFood",
+                                   description: "TestFood",
+                                   foodImageUrl: "TestFood",
+                                   price: "1",
+                                   count: "1",
+                                   id: "test")]))
+    }
+    
+    func deleteFoodCart(uid: String, id: String) {}
+    
+    func updateUser(userName: String, phone: String, address: String, image: UIImage?, id: String, complietion: @escaping (String, UIImage) -> Void) {
+        guard let image = UIImage(named: "card") else { return }
+        complietion("http://test.ru", image)
+    }
+    
+    func addMyFood(food: Food, uid: String, id: String) {}
+    
+    func getMyFood(id: String, complietion: @escaping (Result<[Food], Error>) -> Void) {
+        complietion(.success([Food(name: "TestFood",
+                                   description: "TestFood",
+                                   foodImageUrl: "TestFood",
+                                   price: "10",
+                                   id: "test")]))
+    }
+    
+    func deleteMyFoods(uid: String, id: String) {
+    }
+    
     
     func loadImage(url: String, complietion: @escaping (Image) -> ()) {
         complietion(Image("userImage"))
     }
-    
-    func updateUser(userName: String,
-                    phone: String,
-                    address: String,
-                    image: UIImage?,
-                    id: String,
-                    complietion: @escaping (String) -> Void) {
-        complietion("http://test.com")
-    }
-    
 
     func getFoods(complietion: @escaping (Result<[Food], Error>) -> Void) {
         complietion(.success([Food(name: "TestFood",
                                    description: "TestFood",
                                    foodImageUrl: "TestFood",
-                                   price: 1)]))
+                                   price: "1")]))
     }
     
     func getUser(id: String,

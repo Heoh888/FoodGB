@@ -22,7 +22,6 @@ struct SideMenuView: View {
                content: {
 
             VStack(alignment: .leading, spacing: 10) {
-                
                 TapButtonMenu(image: "house",
                               title: "Home",
                               animation: animation,
@@ -33,13 +32,13 @@ struct SideMenuView: View {
                               animation: animation,
                               selectedTab: $selectedTap)
                 
-                TapButtonMenu(image: "cart",
-                              title: "Orders",
+                TapButtonMenu(image: "list.clipboard",
+                              title: "Order history",
                               animation: animation,
                               selectedTab: $selectedTap)
                 
-                TapButtonMenu(image: "tag",
-                              title: "Offer and promo",
+                TapButtonMenu(image: "shield.righthalf.filled",
+                              title: "Security",
                               animation: animation,
                               selectedTab: $selectedTap)
                 
@@ -48,10 +47,6 @@ struct SideMenuView: View {
                               animation: animation,
                               selectedTab: $selectedTap)
 
-                TapButtonMenu(image: "shield.righthalf.filled",
-                              title: "Security",
-                              animation: animation,
-                              selectedTab: $selectedTap)
             }
             .padding(.leading, -15)
             .padding(.top, 100)

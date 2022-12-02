@@ -39,8 +39,7 @@ struct ProfilleView: View {
                         change.toggle()
                     } label: {
                         Text("change")
-                            .font(.system(size: 18, weight: .semibold))
-                            .fontWeight(.light)
+                            .font(.system(size: 18, weight: .light))
                             .foregroundColor(Color("MainColor"))
                     }
                     .sheet(isPresented: $change) {

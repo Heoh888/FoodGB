@@ -13,6 +13,8 @@ struct FoodCarouselView: View {
     // MARK: - Properties
     @Binding var buttonDisabled: Bool
     @StateObject var viewModel: HomeViewModel
+    @StateObject var myFoodsviewModel: MyFoodsViewModel
+    @StateObject var ordersViewModel: OrdersViewModel
     @State var showDetailsFood = false
     
     // MARK: - Private properties
@@ -59,7 +61,9 @@ struct FoodCarouselView: View {
                     })
                     .disabled(buttonDisabled)
                     .fullScreenCover(item: $selectedData) { item in
-                        DetailsFoodView(food: item)
+                        DetailsFoodView(food: item,
+                                        myFoodsViewModel: myFoodsviewModel,
+                                        ordersViewModel: ordersViewModel)
                     }
                 }
             }

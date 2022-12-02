@@ -11,7 +11,7 @@ import SwiftUI
 class ImageUploaderOperation: AsyncOperation {
 
     // MARK: - Properties
-    let service: NetworkServiceProtocol
+    private let service: NetworkServiceProtocol
     var image: UIImage
     
     var imageUrl: String?
