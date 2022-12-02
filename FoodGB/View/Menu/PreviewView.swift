@@ -48,7 +48,7 @@ struct PreviewView: View {
             ProfilleView(user: $user, viewModel: viewModel)
                 .tag("Profile")
 
-            HistoryView()
+            OrderHistoryView()
                 .tag("Order history")
 
             PrivacyPolicy()

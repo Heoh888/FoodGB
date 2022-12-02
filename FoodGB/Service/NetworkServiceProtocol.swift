@@ -44,11 +44,30 @@ protocol NetworkServiceProtocol {
     /// - Returns: Возвращает url картинки пользователя полученного  от `FireBaase`
     func uploaderImage(image: UIImage, completion: @escaping(String) -> Void)
     
+    // MARK: - Order functions
     //  Функция создает закааз и созраняет его в базу
     /// - Parameters:
     ///   - foods: массив с продуктами.
     ///   - uid: индификатор пользователя.
     func createOrder(foods: [Food], uid: String, data: [String : String])
+    
+    //  Функция выполняет операции по формированию массива [Orders Model]
+    /// - Parameters:
+    ///   - uid: индификатор пользователя.
+    ///   - Returns: Возвращает массив `[OrdersModel]` полученного  в результате работы функций`getOrderDetails` и `getFoodsOrder`
+    func getOrders(uid: String, complietion: @escaping ([OrdersModel]) -> Void)
+    
+    //  Функция возвращает массив [Orders] из каталога orders без коллекции foods
+    /// - Parameters:
+    ///   - uid: индификатор пользователя.
+    ///   - Returns: Возвращает массив `[Orders]` полученного  от `FireBaase`
+    func getOrderDetails(uid: String, complietion: @escaping ([OrdersModel]) -> Void)
+    
+    //  Функция возвращает массив [Food] по конкретному заказу
+    /// - Parameters:
+    ///   - uid: индификатор пользователя.
+    ///   - id: индификатор заказа.
+    func getFoodsOrder(uid: String, id: String, complietion: @escaping ([Food]) -> Void)
     
     // MARK: - Food functions
     //  Функция меняет количество конкретного товара в корзине

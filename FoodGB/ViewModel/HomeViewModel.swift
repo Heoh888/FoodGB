@@ -39,7 +39,6 @@ class HomeViewModel: ObservableObject {
             })
         getFoods()
     }
-    
     // MARK: - Functions
     func filteredFoodsByType(type: String) {
         if type == "All" {

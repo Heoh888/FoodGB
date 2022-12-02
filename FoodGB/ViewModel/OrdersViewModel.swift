@@ -13,6 +13,7 @@ enum MoreLess {
 }
 
 class OrdersViewModel: ObservableObject {
+    
     // MARK: - Properties
     @Published var foodsCart: [Food] = []
     @Published var totalPrice: String = ""

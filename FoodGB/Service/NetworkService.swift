@@ -92,6 +92,7 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
     
+    // MARK: - Orders functions
     func createOrder(foods: [Food], uid: String, data: [String : String]) {
         let fileName = NSUUID().uuidString
         COLLECTION_ORDERS.document(uid).collection("order").document(fileName).setData(data) { err in
@@ -113,6 +114,47 @@ final class NetworkService: NetworkServiceProtocol {
                 }
                 print("Document successfully updated")
             }
+        }
+    }
+    
+    func getOrders(uid: String, complietion: @escaping ([OrdersModel]) -> Void) {
+        
+        let queue = OperationQueue()
+        
+        /// Операция получает детали заказа
+        let getOrderDetails = GetOrdersOperation(uid: uid)
+        queue.addOperation(getOrderDetails)
+        
+        /// Операция получает маcсив `[Food]` по конкретному заказу и формерует его с деталеми заказа
+        let getFoodsOrder = GetFoodOrderOperation(uid: uid)
+        getFoodsOrder.addDependency(getOrderDetails)
+        getFoodsOrder.completionBlock = {
+            OperationQueue.main.addOperation {
+                complietion(getFoodsOrder.orders)
+            }
+        }
+        OperationQueue.main.addOperation(getFoodsOrder)
+    }
+    
+    func getOrderDetails(uid: String, complietion: @escaping ([OrdersModel]) -> Void) {
+        COLLECTION_ORDERS.document(uid).collection("order").getDocuments() { (querySnapshot, err) in
+            var ordersNew: [OrdersModel] = []
+            for document in querySnapshot!.documents {
+                guard let order = try? document.data(as: OrdersModel.self) else { return }
+                ordersNew.append(order)
+            }
+            complietion(ordersNew)
+        }
+    }
+    
+    func getFoodsOrder(uid: String, id: String, complietion: @escaping ([Food]) -> Void) {
+        COLLECTION_ORDERS.document(uid).collection("order").document(id).collection("foods").getDocuments() { (querySnapshot, err) in
+            var foods:[Food] = []
+            for document in querySnapshot!.documents {
+                guard let food = try? document.data(as: Food.self) else { return }
+                foods.append(food)
+            }
+            complietion(foods)
         }
     }
     
@@ -159,7 +201,7 @@ final class NetworkService: NetworkServiceProtocol {
             }
         }
     }
-    
+    // MARK:
     func getFoodCart(id: String, complietion: @escaping (Result<[Food], Error>) -> Void) {
         COLLECTION_FOODSСART.document(id).collection("foods").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -184,7 +226,7 @@ final class NetworkService: NetworkServiceProtocol {
             }
         }
     }
-    
+    // MARK:
     func getFoods(complietion: @escaping (Result<[Food], Error>) -> Void) {
         COLLECTION_FOODS.getDocuments { snapshot, error in
             if let error = error {
@@ -215,7 +257,7 @@ final class NetworkService: NetworkServiceProtocol {
             }
         }
     }
-    
+    // MARK:
     func getMyFood(id: String, complietion: @escaping (Result<[Food], Error>) -> Void) {
         COLLECTION_MYFOODS.document(id).collection("foods").getDocuments() { (querySnapshot, err) in
             if let err = err {

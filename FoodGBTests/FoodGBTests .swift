@@ -12,8 +12,15 @@ final class FoodGBTests: XCTestCase {
     
     let service = MockNetworkService()
     
-    // MARK: - testing ProfileViewModel
+    // MARK: - testing OrderHistoryViewModel
     func testLoadImage() {
+        let viewModel = OrderHistoryViewModel(service: service)
+        XCTAssertNotNil(viewModel.orders)
+    }
+
+    
+    // MARK: - testing ProfileViewModel
+    func testGetOrderHistory() {
         let viewModel = ProfileViewModel(service: service)
         XCTAssertNotNil(viewModel.userImage)
     }
