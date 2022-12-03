@@ -26,7 +26,6 @@ struct AuthView: View {
             Color.gray.opacity(0.15)
                 .ignoresSafeArea()
             VStack {
-                
                 VStack {
                     ZStack(alignment: .bottom) {
                         Rectangle()
@@ -48,7 +47,6 @@ struct AuthView: View {
                                         .fontWeight(.bold)
                                         .foregroundColor(Color.black)
                                 }
-                                
                                 Spacer()
                                 
                                 Button {
@@ -94,7 +92,6 @@ struct AuthView: View {
                     }
                 }
                 .offset(x: view == "Sign-up" ?  width / 2 : -width / 2)
-                
                 Spacer()
                 
                 Button {

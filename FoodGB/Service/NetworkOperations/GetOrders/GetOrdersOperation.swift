@@ -11,7 +11,6 @@ class GetOrdersOperation: AsyncOperation {
     
     let uid: String
     var orders = [OrdersModel]()
-    var error: Error?
     
     // MARK: - Properties
     private let service: NetworkServiceProtocol

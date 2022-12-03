@@ -16,6 +16,7 @@
 		86188088293988A3001CB392 /* GetFoodOrderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618808529394DE3001CB392 /* GetFoodOrderOperation.swift */; };
 		86188089293988A3001CB392 /* GetOrdersOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618808329394D9B001CB392 /* GetOrdersOperation.swift */; };
 		8618808A29398AED001CB392 /* OrdersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861880812938D330001CB392 /* OrdersModel.swift */; };
+		8618808C2939A909001CB392 /* OrderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618808B2939A909001CB392 /* OrderDetailsView.swift */; };
 		86407EB12924102D007BF232 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86407EB02924102D007BF232 /* OrdersViewModel.swift */; };
 		86407EB429241D89007BF232 /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86407EB329241D89007BF232 /* OrdersCell.swift */; };
 		86407EB629251ED6007BF232 /* CheckoutOrdrersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86407EB529251ED6007BF232 /* CheckoutOrdrersView.swift */; };
@@ -159,6 +160,7 @@
 		861880812938D330001CB392 /* OrdersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersModel.swift; sourceTree = "<group>"; };
 		8618808329394D9B001CB392 /* GetOrdersOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOrdersOperation.swift; sourceTree = "<group>"; };
 		8618808529394DE3001CB392 /* GetFoodOrderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFoodOrderOperation.swift; sourceTree = "<group>"; };
+		8618808B2939A909001CB392 /* OrderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsView.swift; sourceTree = "<group>"; };
 		86407EB02924102D007BF232 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
 		86407EB329241D89007BF232 /* OrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCell.swift; sourceTree = "<group>"; };
 		86407EB529251ED6007BF232 /* CheckoutOrdrersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutOrdrersView.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				86BAEF34292D7C530071D1C3 /* OrderHistoryView.swift */,
+				8618808B2939A909001CB392 /* OrderDetailsView.swift */,
 			);
 			path = OrderHistory;
 			sourceTree = "<group>";
@@ -314,10 +317,8 @@
 		8686C6312911E2AB00D3FEC9 /* NetworkOperations */ = {
 			isa = PBXGroup;
 			children = (
-				8686C6322911E2BD00D3FEC9 /* ImageUploaderOperation.swift */,
-				8686C6342911E2DA00D3FEC9 /* UplouderDataOperation.swift */,
-				8618808329394D9B001CB392 /* GetOrdersOperation.swift */,
-				8618808529394DE3001CB392 /* GetFoodOrderOperation.swift */,
+				86EF5D53293B81CD0096FBDE /* UpdateUser */,
+				86EF5D52293B81A60096FBDE /* GetOrders */,
 			);
 			path = NetworkOperations;
 			sourceTree = "<group>";
@@ -558,6 +559,24 @@
 				86E7571F28FFF5CD00EE6A40 /* AuthView.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		86EF5D52293B81A60096FBDE /* GetOrders */ = {
+			isa = PBXGroup;
+			children = (
+				8618808529394DE3001CB392 /* GetFoodOrderOperation.swift */,
+				8618808329394D9B001CB392 /* GetOrdersOperation.swift */,
+			);
+			path = GetOrders;
+			sourceTree = "<group>";
+		};
+		86EF5D53293B81CD0096FBDE /* UpdateUser */ = {
+			isa = PBXGroup;
+			children = (
+				8686C6342911E2DA00D3FEC9 /* UplouderDataOperation.swift */,
+				8686C6322911E2BD00D3FEC9 /* ImageUploaderOperation.swift */,
+			);
+			path = UpdateUser;
 			sourceTree = "<group>";
 		};
 		ED7129779B45F8FBE6ACD8BA /* Frameworks */ = {
@@ -826,6 +845,7 @@
 				8686C6332911E2BD00D3FEC9 /* ImageUploaderOperation.swift in Sources */,
 				86E7571A28FFF5A000EE6A40 /* NetworkService.swift in Sources */,
 				865992242901A66100476617 /* ImagePicker.swift in Sources */,
+				8618808C2939A909001CB392 /* OrderDetailsView.swift in Sources */,
 				86933D002909B8B900DE39C8 /* HomeViewModel.swift in Sources */,
 				86E7571C28FFF5B300EE6A40 /* LoginView.swift in Sources */,
 				86B9DD5B291F9F8800036273 /* MyFoodsView.swift in Sources */,

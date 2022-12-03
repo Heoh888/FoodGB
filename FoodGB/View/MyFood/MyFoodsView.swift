@@ -31,7 +31,6 @@ struct MyFoodsView: View {
                     }
                     .padding(.top)
                 }
-
                 Spacer()
             }
             .padding(.top, 30)

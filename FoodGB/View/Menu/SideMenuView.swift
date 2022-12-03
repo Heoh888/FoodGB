@@ -18,9 +18,7 @@ struct SideMenuView: View {
     
     // MARK: - Views
     var body: some View {
-        VStack(alignment: .leading,
-               content: {
-
+        VStack(alignment: .leading, content: {
             VStack(alignment: .leading, spacing: 10) {
                 TapButtonMenu(image: "house",
                               title: "Home",

@@ -40,7 +40,6 @@ struct PersistenceController {
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // TO:DO - Заменить эту реализацию кодом для соответствующей обработки ошибки.
-
                 /*
                  Типичные причины ошибки здесь включают:
                     * Родительский каталог не существует, не может быть создан или запрещает запись.

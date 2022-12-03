@@ -28,7 +28,6 @@ struct UpdateProfilleView: View {
     
     // MARK: - Views
     var body: some View {
-        
         VStack {
             HStack {
                 VStack {
@@ -58,7 +57,6 @@ struct UpdateProfilleView: View {
             CustomTextField(text: $phone, label: "Phone")
             
             CustomTextField(text: $address, label: "Address")
-            
             Spacer()
             
             Button {

@@ -32,7 +32,6 @@ struct MyFoodCell: View {
                 Text(myFood.name)
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundColor(.black)
-                
                 Spacer()
                 
                 Button {

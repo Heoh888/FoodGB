@@ -42,14 +42,16 @@ struct SearchView: View {
                 .padding(.horizontal)
                 .matchedGeometryEffect(id: "SEARCHBAR", in: animation)
                 .padding(.trailing, 20)
-                
             }
             .padding(.horizontal, 50)
             
             if let foods = viewModel.searchedFoods {
                 if foods.isEmpty {
                     VStack {
-                        Text("No result")
+                        Spacer()
+                        
+                        searchEmpty()
+                        Spacer()
                     }
                 } else {
                     ScrollView(.vertical, showsIndicators: false) {
@@ -94,6 +96,28 @@ struct SearchView: View {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
+    
+    @ViewBuilder
+    func searchEmpty() -> some View {
+        VStack(alignment: .center) {
+            Image("search")
+                .resizable()
+                .resizable()
+                .frame(width: 120, height: 115)
+                .offset(x: -10)
+            
+            
+            Text("Item not found")
+                .multilineTextAlignment(.center)
+                .font(.title)
+                .padding()
+            
+            Text("Try searching the item with \na different keyword.")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.black.opacity(0.5))
+        }
+    }
+
     
     @ViewBuilder
     func productCardView(food: Food) -> some View {

@@ -9,12 +9,12 @@ import Foundation
 
 class GetFoodOrderOperation: AsyncOperation {
 
-    let uid: String
-    
     // MARK: - Properties
-    private let service: NetworkServiceProtocol
+    let uid: String
     var orders = [OrdersModel]()
-    var error: Error?
+    
+    // MARK: - Private roperties
+    private let service: NetworkServiceProtocol
     
     // MARK: - Functions
     override func main() {
@@ -25,7 +25,7 @@ class GetFoodOrderOperation: AsyncOperation {
                 service.getFoodsOrder(uid: uid, id: id) { foods in
                     newOrder.foods = foods
                     self.orders.append(newOrder)
-                    self.state = .finished
+                    self.state = .finished 
                 }
             }
         } else {
