@@ -24,7 +24,7 @@ class OrderHistoryViewModel: ObservableObject {
         self.getOrderHistory()
     }
     
-    // MARK: - Functions
+    // MARK: - Public functions
     func getOrderHistory() {
         service.getOrders(uid: uid) { orders in
             self.orders = orders
