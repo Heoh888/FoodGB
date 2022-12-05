@@ -31,13 +31,13 @@ final class NetworkService: NetworkServiceProtocol {
         
         if let img = image {
             
-            /// Операция загрузки `img` в Firebase.Storage.
-            /// Также операция возвращает `imageUrl` только что загруженного изображения
+            // Операция загрузки `img` в Firebase.Storage.
+            // Также операция возвращает `imageUrl` только что загруженного изображения
             let queue = OperationQueue()
             let getImageUrl = ImageUploaderOperation(image: img)
             queue.addOperation(getImageUrl)
             
-            /// Операция  обновляет информацию о пользователе
+            // Операция  обновляет информацию о пользователе
             let uploadeDate = UplouderDataOperation(id: id, data: data)
             uploadeDate.addDependency(getImageUrl)
             uploadeDate.completionBlock = {
@@ -92,6 +92,7 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
     
+    // MARK: - Orders functions
     func createOrder(foods: [Food], uid: String, data: [String : String]) {
         let fileName = NSUUID().uuidString
         COLLECTION_ORDERS.document(uid).collection("order").document(fileName).setData(data) { err in
@@ -116,7 +117,48 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
     
-    // MARK: - Food functions
+    func getOrders(uid: String, complietion: @escaping ([OrdersModel]) -> Void) {
+        
+        let queue = OperationQueue()
+        
+        // Операция получает детали заказа
+        let getOrderDetails = GetOrdersOperation(uid: uid)
+        queue.addOperation(getOrderDetails)
+        
+        // Операция получает маcсив `[Food]` по конкретному заказу и формерует его с деталеми заказа
+        let getFoodsOrder = GetFoodOrderOperation(uid: uid)
+        getFoodsOrder.addDependency(getOrderDetails)
+        getFoodsOrder.completionBlock = {
+            OperationQueue.main.addOperation {
+                complietion(getFoodsOrder.orders)
+            }
+        }
+        OperationQueue.main.addOperation(getFoodsOrder)
+    }
+    
+    func getOrderDetails(uid: String, complietion: @escaping ([OrdersModel]) -> Void) {
+        COLLECTION_ORDERS.document(uid).collection("order").getDocuments() { (querySnapshot, err) in
+            var ordersNew: [OrdersModel] = []
+            for document in querySnapshot!.documents {
+                guard let order = try? document.data(as: OrdersModel.self) else { return }
+                ordersNew.append(order)
+            }
+            complietion(ordersNew)
+        }
+    }
+    
+    func getFoodsOrder(uid: String, id: String, complietion: @escaping ([Food]) -> Void) {
+        COLLECTION_ORDERS.document(uid).collection("order").document(id).collection("foods").getDocuments() { (querySnapshot, err) in
+            var foods:[Food] = []
+            for document in querySnapshot!.documents {
+                guard let food = try? document.data(as: Food.self) else { return }
+                foods.append(food)
+            }
+            complietion(foods)
+        }
+    }
+    
+    // MARK: - Cart functions
     func changeAmountFood(uid: String, id: String, count: String) {
         let washingtonRef = COLLECTION_FOODSСART.document(uid).collection("foods").document(id)
         
@@ -184,7 +226,7 @@ final class NetworkService: NetworkServiceProtocol {
             }
         }
     }
-    
+    // MARK: - Foods functions
     func getFoods(complietion: @escaping (Result<[Food], Error>) -> Void) {
         COLLECTION_FOODS.getDocuments { snapshot, error in
             if let error = error {
@@ -215,7 +257,7 @@ final class NetworkService: NetworkServiceProtocol {
             }
         }
     }
-    
+    // MARK: - My Foods functions
     func getMyFood(id: String, complietion: @escaping (Result<[Food], Error>) -> Void) {
         COLLECTION_MYFOODS.document(id).collection("foods").getDocuments() { (querySnapshot, err) in
             if let err = err {

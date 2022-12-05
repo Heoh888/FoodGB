@@ -29,7 +29,6 @@ struct DetailsFoodView: View {
             VStack {
                 HStack {
                     Image(systemName: "chevron.backward")
-                        .scaleEffect(1.3)
                         .onTapGesture {
                             presentationMode.wrappedValue.dismiss()
                         }

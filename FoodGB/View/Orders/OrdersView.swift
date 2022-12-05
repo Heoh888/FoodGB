@@ -10,7 +10,9 @@ import SwiftUI
 
 struct OrdersView: View {
 
+    // MARK: - Properties
     @StateObject var ordersViewModel: OrdersViewModel
+    @StateObject var ordersHistoryViewModel: OrderHistoryViewModel
     @Binding var selrctedTap: String
     @Binding var currentTab: TabBar
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -52,11 +54,9 @@ struct OrdersView: View {
                     
                     basketFull()
                 }
-                
                 Spacer()
                 
                 bottonCart()
-                
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -97,28 +97,6 @@ struct OrdersView: View {
     @ViewBuilder
     func bottonCart() -> some View {
         HStack(alignment: .center) {
-            if !ordersViewModel.foodsCart.isEmpty {
-                ZStack(alignment: .center) {
-                    Rectangle()
-                        .frame(height: 70)
-                        .foregroundColor(.white)
-                        .cornerRadius(20)
-                    
-                    HStack {
-                        Text("Total:")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.black)
-                            .multilineTextAlignment(.leading)
-                        Text("\(ordersViewModel.totalPrice) $")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(Color("MainColor"))
-                            .multilineTextAlignment(.leading)
-                    }
-                }
-                
-                Spacer()
-            }
-            
             if ordersViewModel.foodsCart.isEmpty {
                 Button {
                     if ordersViewModel.foodsCart.isEmpty {
@@ -136,8 +114,27 @@ struct OrdersView: View {
                         .cornerRadius(30)
                 }
             } else {
+                ZStack(alignment: .center) {
+                    Rectangle()
+                        .frame(height: 70)
+                        .foregroundColor(.white)
+                        .cornerRadius(20)
+                    
+                    HStack {
+                        Text("Total:")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(.black)
+                            .multilineTextAlignment(.leading)
+                        Text("\(ordersViewModel.totalPrice) $")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(Color("MainColor"))
+                            .multilineTextAlignment(.leading)
+                    }
+                }
+
                 NavigationLink {
                     CheckoutOrdrersView(ordersViewModel: ordersViewModel,
+                                        ordersHistoryViewModel: ordersHistoryViewModel,
                                         selrctedTap: $selrctedTap,
                                         userName: ordersViewModel.currentUser?.userName ?? "",
                                         address: ordersViewModel.currentUser?.address ?? "",
@@ -154,7 +151,6 @@ struct OrdersView: View {
                         .cornerRadius(30)
                 }
             }
-            
         }
         .padding(.horizontal, 30)
         .padding(.bottom, 50)

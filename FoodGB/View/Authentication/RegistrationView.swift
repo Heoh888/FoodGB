@@ -18,9 +18,9 @@ struct RegistrationView: View {
     var body: some View {
         ZStack{
             VStack(alignment: .leading) {
-                CustomTextField(text: $userName, label: "Name")
-                CustomTextField(text: $email, label: "Email address")
-                CustomTextField(text: $password, label: "Password", securityOption: true)
+                CustomTextField(text: $userName, label: "Name", identifier: "Registration Name")
+                CustomTextField(text: $email, label: "Email address", identifier: "Registration Email address")
+                CustomTextField(text: $password, label: "Password", identifier: "Registration Password", securityOption: true)
             }
             .padding(.horizontal, 80)
         }

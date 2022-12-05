@@ -6,12 +6,19 @@
 //
 
 import Foundation
+import Combine
 
 class HomeViewModel: ObservableObject {
     
-    // MARK: - Properties
+    // MARK: - Public Properties
+    @Published var typeFoods: [String] = ["All"]
     @Published var foods: [Food] = []
     @Published var error: Error?
+    @Published var filteredFoods: [Food] = []
+    @Published var searchText: String = ""
+    @Published var searchActivated: Bool = false
+    @Published var searchedFoods: [Food]?
+    var searchCancellable: AnyCancellable?
     
     // MARK: - Private properties
     private var  service: NetworkServiceProtocol!
@@ -19,7 +26,29 @@ class HomeViewModel: ObservableObject {
     // MARK: - Initialisation
     init(service: NetworkServiceProtocol = NetworkService()) {
         self.service = service
+        searchCancellable = $searchText
+            .removeDuplicates()
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .sink(receiveValue: { str in
+                if str != "" {
+                    self.searchedProducts()
+                } else {
+                    self.searchedFoods = nil
+                }
+            })
         getFoods()
+    }
+    // MARK: - Public functions
+    func filteredFoodsByType(type: String) {
+        if type == "All" {
+            self.filteredFoods = self.foods
+        } else {
+            self.filteredFoods = self.foods.filter { product in product.type == type }
+        }
+    }
+    
+    func searchedProducts() {
+        searchedFoods = foods.filter { $0.name.lowercased().contains(searchText.lowercased())}
     }
     
     // MARK: - Private functions
@@ -29,8 +58,19 @@ class HomeViewModel: ObservableObject {
             switch result {
             case .success(let foods):
                 self.foods = foods
+                self.getTypeFoods(foods: foods)
+                self.filteredFoodsByType(type: "All")
             case let .failure(error):
                 self.error = error
+            }
+        }
+    }
+    
+    private func getTypeFoods(foods: [Food]) {
+        for food in foods {
+            guard let type = food.type else { continue }
+            if !typeFoods.contains(type) {
+                typeFoods.append(type)
             }
         }
     }

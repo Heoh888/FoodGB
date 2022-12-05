@@ -18,9 +18,7 @@ struct SideMenuView: View {
     
     // MARK: - Views
     var body: some View {
-        VStack(alignment: .leading,
-               content: {
-
+        VStack(alignment: .leading, content: {
             VStack(alignment: .leading, spacing: 10) {
                 TapButtonMenu(image: "house",
                               title: "Home",
@@ -68,6 +66,7 @@ struct SideMenuView: View {
                 .padding(.horizontal, 20)
             })
             .padding(.leading, -15)
+            .accessibilityIdentifier("Sign-out")
         })
         .padding()
         .frame(maxWidth: .infinity,

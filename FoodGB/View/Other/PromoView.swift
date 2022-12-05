@@ -16,14 +16,30 @@ struct PromoView: View {
                 .ignoresSafeArea()
             
             VStack(alignment: .leading) {
-                
                 Text("Offer and promo")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.top, 60)
                 Spacer()
+                
+                promoEmpty()
+                Spacer()
             }
             .padding(.horizontal, 30.0)
+        }
+    }
+    
+    @ViewBuilder
+    func promoEmpty() -> some View {
+        VStack(alignment: .center) {
+            Text("ohh snap!  No offers yet")
+                .multilineTextAlignment(.center)
+                .font(.title)
+                .padding()
+            
+            Text("Bella dose’t have any offers \nyet please check again.")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.black.opacity(0.5))
         }
     }
 }

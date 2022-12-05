@@ -9,7 +9,7 @@ import Foundation
 
 class MyFoodsViewModel: ObservableObject {
     
-    // MARK: - Properties
+    // MARK: - Public Properties
     @Published var like = false
     @Published var myFoods: [Food] = []
     @Published var error: Error?
@@ -26,6 +26,7 @@ class MyFoodsViewModel: ObservableObject {
         self.getMyFoods()
     }
     
+    // MARK: - Public functions
     func deleteMyFoods(id: String) {
         service.deleteMyFoods(uid: uid, id: id)
         getMyFoods()
@@ -41,7 +42,7 @@ class MyFoodsViewModel: ObservableObject {
         return result.count > 0
     }
     
-    // MARK: - Private properties
+    // MARK: - Private functions
     private func getMyFoods() {
          service.getMyFood(id: uid) { [weak self] result in
              guard let self = self else { return }

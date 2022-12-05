@@ -14,32 +14,44 @@ struct PreviewView: View {
     @Binding var selrctedTap: String
     @Binding var user: User
     @Binding var buttonDisabled: Bool
+    @Binding var searchActivated: Bool
     @ObservedObject var ordersViewModel: OrdersViewModel
+    @ObservedObject var ordersHistoryViewModel: OrderHistoryViewModel
     @StateObject var viewModel = ProfileViewModel()
     
     // MARK: - Initialisation
-    init(currentTab: Binding<TabBar>, selrctedTap: Binding<String>,  user: Binding<User>, buttonDisabled: Binding<Bool>, ordersViewModel: OrdersViewModel) {
+    init(currentTab: Binding<TabBar>,
+         selrctedTap: Binding<String>,
+         user: Binding<User>,
+         searchActivated: Binding<Bool>,
+         buttonDisabled: Binding<Bool>,
+         ordersViewModel: OrdersViewModel,
+         ordersHistoryViewModel: OrderHistoryViewModel) {
         UITabBar.appearance().isHidden = true
         self._currentTab = currentTab
         self._selrctedTap = selrctedTap
         self._user = user
         self._buttonDisabled = buttonDisabled
+        self._searchActivated = searchActivated
         self.ordersViewModel = ordersViewModel
+        self.ordersHistoryViewModel = ordersHistoryViewModel
     }
     
     // MARK: - Views
     var body: some View {
         TabView(selection: $selrctedTap) {
-
             MainPage(currentTab: $currentTab,
-                     buttonDisabled: $buttonDisabled, user: $user,
-                     ordersViewModel:  ordersViewModel)
+                     buttonDisabled: $buttonDisabled,
+                     searchActivated: $searchActivated,
+                     user: $user,
+                     ordersViewModel:  ordersViewModel,
+                     ordersHistoryViewModel: ordersHistoryViewModel)
                 .tag("Main")
 
             ProfilleView(user: $user, viewModel: viewModel)
                 .tag("Profile")
 
-            HistoryView()
+            OrderHistoryView(viewModel: ordersHistoryViewModel)
                 .tag("Order history")
 
             PrivacyPolicy()
@@ -48,6 +60,5 @@ struct PreviewView: View {
             SecurityView()
                 .tag("Security")
         }
-        
     }
 }

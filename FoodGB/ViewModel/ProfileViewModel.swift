@@ -9,7 +9,7 @@ import SwiftUI
 
 class ProfileViewModel: ObservableObject {
     
-    // MARK: - Properties
+    // MARK: - Public Properties
     @Published var userName: String = ""
     @Published var phone = ""
     @Published var address = ""

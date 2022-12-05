@@ -9,8 +9,7 @@ import Foundation
 
 class CheckoutOrdrersViewModel: ObservableObject {
     
-    
-    // MARK: - Properties
+    // MARK: - Public Properties
     @Published var ditails = ["Payment method": "Card", "Deviliry": "To the door"]
     @Published var warning: String = ""
     
@@ -37,12 +36,12 @@ class CheckoutOrdrersViewModel: ObservableObject {
     func createOrder(foods: [Food], userName: String, address: String, phone: String, total: String) {
         guard let uid = AuthViewModel.shared.currentUser?.id else { return }
         
-        let data = ["userName": userName,
+        let data = ["user_name": userName,
                     "address": address,
                     "phone": phone,
                     "total": total,
-                    "Payment method": ditails["Payment method"] ?? "",
-                    "Deviliry": ditails["Deviliry"] ?? "",
+                    "payment_method": ditails["Payment method"] ?? "",
+                    "deviliry": ditails["Deviliry"] ?? "",
                     "data": dateFormatter.string(from: Date())]
         
         service.createOrder(foods: foods, uid: uid, data: data)

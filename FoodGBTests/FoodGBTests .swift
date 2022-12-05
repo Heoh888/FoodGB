@@ -12,8 +12,15 @@ final class FoodGBTests: XCTestCase {
     
     let service = MockNetworkService()
     
-    // MARK: - testing ProfileViewModel
+    // MARK: - testing OrderHistoryViewModel
     func testLoadImage() {
+        let viewModel = OrderHistoryViewModel(service: service)
+        XCTAssertNotNil(viewModel.orders)
+    }
+
+    
+    // MARK: - testing ProfileViewModel
+    func testGetOrderHistory() {
         let viewModel = ProfileViewModel(service: service)
         XCTAssertNotNil(viewModel.userImage)
     }
@@ -32,9 +39,23 @@ final class FoodGBTests: XCTestCase {
     }
     
     // MARK: - testing HomeViewModel
-    func testGetFoodsHomeView() throws {
+    func testGetFoods() throws {
         let viewModel = HomeViewModel(service: service)
         XCTAssertTrue(!viewModel.foods.isEmpty)
+    }
+    
+    func testGetTypeFoods() throws {
+        let viewModel = HomeViewModel(service: service)
+        viewModel.filteredFoodsByType(type: "Food")
+        let check = viewModel.foods.map { $0.type == "Food" ? true : false }
+        XCTAssertTrue(check.allSatisfy({$0}))
+    }
+    
+    func testSearchedProducts() throws {
+        let viewModel = HomeViewModel(service: service)
+        viewModel.searchText = "T"
+        viewModel.searchedProducts()
+        XCTAssertNotNil(viewModel.searchedFoods)
     }
     
     // MARK: - testing AuthViewModel
@@ -57,7 +78,7 @@ final class FoodGBTests: XCTestCase {
     
     func testIsLike() {
         let viewModel = MyFoodsViewModel(service: service, uid: "test")
-        var result = viewModel.isLike(id: "test")
+        let result = viewModel.isLike(id: "test")
         XCTAssertTrue(result)
     }
     

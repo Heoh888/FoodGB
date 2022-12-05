@@ -15,7 +15,7 @@ struct MyFoodsView: View {
     // MARK: - Views
     var body: some View {
         ZStack(alignment: .leading) {
-            Color("Background")
+            Color("Background_2")
                 .ignoresSafeArea()
             
             VStack(alignment: .leading) {
@@ -31,7 +31,6 @@ struct MyFoodsView: View {
                     }
                     .padding(.top)
                 }
-
                 Spacer()
             }
             .padding(.top, 30)

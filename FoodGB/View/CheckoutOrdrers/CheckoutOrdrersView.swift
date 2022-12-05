@@ -12,6 +12,7 @@ struct CheckoutOrdrersView: View {
     // MARK: - Properties
     @StateObject var viewModel = CheckoutOrdrersViewModel()
     @StateObject var ordersViewModel: OrdersViewModel
+    @StateObject var ordersHistoryViewModel: OrderHistoryViewModel
     @Binding var selrctedTap: String
     
     var userName: String
@@ -63,6 +64,7 @@ struct CheckoutOrdrersView: View {
                                           phone: phone,
                                           total: total)
                     ordersViewModel.foodsCart = []
+                    ordersHistoryViewModel.getOrderHistory()
                     selrctedTap = "Home"
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
