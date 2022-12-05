@@ -15,10 +15,10 @@ struct LoginView: View {
     
     // MARK: - Views
     var body: some View {
-        ZStack{
+        ZStack {
             VStack(alignment: .leading) {
-                CustomTextField(text: $email, label: "Email address")
-                CustomTextField(text: $password, label: "Password", securityOption: true)
+                CustomTextField(text: $email, label: "Email address", identifier: "Login Email address")
+                CustomTextField(text: $password, label: "Password", identifier: "Login Password", securityOption: true)
 
                 Button {
                     // TO:DO - сброс пароля

@@ -101,6 +101,7 @@ struct MenuView: View {
                                 }
                             })
                             .padding()
+                            .accessibilityIdentifier("Menu")
                             Spacer()
                             
                             if !showMainMenu {

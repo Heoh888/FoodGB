@@ -67,6 +67,7 @@ struct StartView: View {
                             .foregroundColor(Color("MainColor"))
                             .background(Color.white)
                             .cornerRadius(30)
+                            .accessibilityIdentifier("start button")
                     }
                 }
                 .frame(width: UIScreen.main.bounds.width)

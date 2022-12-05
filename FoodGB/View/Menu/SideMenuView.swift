@@ -66,6 +66,7 @@ struct SideMenuView: View {
                 .padding(.horizontal, 20)
             })
             .padding(.leading, -15)
+            .accessibilityIdentifier("Sign-out")
         })
         .padding()
         .frame(maxWidth: .infinity,

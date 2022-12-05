@@ -14,8 +14,10 @@ class AuthViewModel: ObservableObject {
     @Published var currentUser: User?
     @Published var warning: String = ""
     
+    // MARK: - Singleton AuthViewModel
     static let shared = AuthViewModel()
     
+    // MARK: - Private properties
     private let service: NetworkServiceProtocol!
     
     // MARK: - Initialisation

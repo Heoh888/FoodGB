@@ -47,6 +47,7 @@ struct AuthView: View {
                                         .fontWeight(.bold)
                                         .foregroundColor(Color.black)
                                 }
+                                .accessibilityIdentifier("Login button")
                                 Spacer()
                                 
                                 Button {
@@ -60,6 +61,7 @@ struct AuthView: View {
                                         .fontWeight(.bold)
                                         .foregroundColor(Color.black)
                                 }
+                                .accessibilityIdentifier("Registration button")
                             }
                             .padding(.top, 50.0)
                             .padding(.horizontal, 80)
@@ -109,6 +111,7 @@ struct AuthView: View {
                         .foregroundColor(Color.white)
                         .cornerRadius(30)
                         .padding(.bottom, 50.0)
+                        .accessibilityIdentifier(view == "Sign-up" ? "Register Button" : "Login Button")
                 }
             }
             .ignoresSafeArea()

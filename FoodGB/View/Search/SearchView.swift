@@ -113,8 +113,6 @@ struct SearchView: View {
                 .padding()
             
             Text("Try searching the item with \na different keyword.")
-                .multilineTextAlignment(.center)
-                .foregroundColor(.black.opacity(0.5))
         }
     }
 

@@ -10,12 +10,11 @@ import Combine
 
 class HomeViewModel: ObservableObject {
     
-    // MARK: - Properties
+    // MARK: - Public Properties
     @Published var typeFoods: [String] = ["All"]
     @Published var foods: [Food] = []
     @Published var error: Error?
     @Published var filteredFoods: [Food] = []
-    
     @Published var searchText: String = ""
     @Published var searchActivated: Bool = false
     @Published var searchedFoods: [Food]?
@@ -39,7 +38,7 @@ class HomeViewModel: ObservableObject {
             })
         getFoods()
     }
-    // MARK: - Functions
+    // MARK: - Public functions
     func filteredFoodsByType(type: String) {
         if type == "All" {
             self.filteredFoods = self.foods

@@ -9,6 +9,7 @@ import Foundation
 
 class GetOrdersOperation: AsyncOperation {
     
+    // MARK: - Public Properties
     let uid: String
     var orders = [OrdersModel]()
     

@@ -10,7 +10,7 @@ import Foundation
 
 class OrderHistoryViewModel: ObservableObject {
     
-    // MARK: - Properties
+    // MARK: - Public Properties
     @Published var orders: [OrdersModel] = []
     var uid: String = ""
     

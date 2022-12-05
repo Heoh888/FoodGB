@@ -14,7 +14,7 @@ enum MoreLess {
 
 class OrdersViewModel: ObservableObject {
     
-    // MARK: - Properties
+    // MARK: - Public Properties
     @Published var foodsCart: [Food] = []
     @Published var totalPrice: String = ""
     @Published var currentUser: User?
@@ -34,6 +34,7 @@ class OrdersViewModel: ObservableObject {
         getUser()
     }
     
+    // MARK: - Public functions
     func deleteFoodCart(food: Food) {
         guard let id = food.id else { return }
         service.deleteFoodCart(uid: uid, id: id)
@@ -59,7 +60,7 @@ class OrdersViewModel: ObservableObject {
         getFoodsCart()
     }
     
-    // MARK: - Private properties
+    // MARK: - Private functions
     private func getFoodsCart() {
          service.getFoodCart(id: uid) { [weak self] result in
              guard let self = self else { return }
