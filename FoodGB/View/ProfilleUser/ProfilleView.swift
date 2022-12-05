@@ -23,7 +23,6 @@ struct ProfilleView: View {
                 .ignoresSafeArea()
             
             VStack(alignment: .leading) {
-                
                 Text("My profile")
                     .font(.title)
                     .fontWeight(.bold)
@@ -32,7 +31,6 @@ struct ProfilleView: View {
                 HStack {
                     Text("Personal details")
                         .font(.system(size: 18, weight: .semibold))
-                    
                     Spacer()
                     
                     Button {

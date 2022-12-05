@@ -26,7 +26,6 @@ struct AuthView: View {
             Color.gray.opacity(0.15)
                 .ignoresSafeArea()
             VStack {
-                
                 VStack {
                     ZStack(alignment: .bottom) {
                         Rectangle()
@@ -48,7 +47,7 @@ struct AuthView: View {
                                         .fontWeight(.bold)
                                         .foregroundColor(Color.black)
                                 }
-                                
+                                .accessibilityIdentifier("Login button")
                                 Spacer()
                                 
                                 Button {
@@ -62,6 +61,7 @@ struct AuthView: View {
                                         .fontWeight(.bold)
                                         .foregroundColor(Color.black)
                                 }
+                                .accessibilityIdentifier("Registration button")
                             }
                             .padding(.top, 50.0)
                             .padding(.horizontal, 80)
@@ -94,7 +94,6 @@ struct AuthView: View {
                     }
                 }
                 .offset(x: view == "Sign-up" ?  width / 2 : -width / 2)
-                
                 Spacer()
                 
                 Button {
@@ -112,6 +111,7 @@ struct AuthView: View {
                         .foregroundColor(Color.white)
                         .cornerRadius(30)
                         .padding(.bottom, 50.0)
+                        .accessibilityIdentifier(view == "Sign-up" ? "Register Button" : "Login Button")
                 }
             }
             .ignoresSafeArea()

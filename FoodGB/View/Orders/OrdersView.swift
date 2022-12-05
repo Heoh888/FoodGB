@@ -12,6 +12,7 @@ struct OrdersView: View {
 
     // MARK: - Properties
     @StateObject var ordersViewModel: OrdersViewModel
+    @StateObject var ordersHistoryViewModel: OrderHistoryViewModel
     @Binding var selrctedTap: String
     @Binding var currentTab: TabBar
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -53,11 +54,9 @@ struct OrdersView: View {
                     
                     basketFull()
                 }
-                
                 Spacer()
                 
                 bottonCart()
-                
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -132,9 +131,10 @@ struct OrdersView: View {
                             .multilineTextAlignment(.leading)
                     }
                 }
-                
+
                 NavigationLink {
                     CheckoutOrdrersView(ordersViewModel: ordersViewModel,
+                                        ordersHistoryViewModel: ordersHistoryViewModel,
                                         selrctedTap: $selrctedTap,
                                         userName: ordersViewModel.currentUser?.userName ?? "",
                                         address: ordersViewModel.currentUser?.address ?? "",
@@ -151,7 +151,6 @@ struct OrdersView: View {
                         .cornerRadius(30)
                 }
             }
-            
         }
         .padding(.horizontal, 30)
         .padding(.bottom, 50)

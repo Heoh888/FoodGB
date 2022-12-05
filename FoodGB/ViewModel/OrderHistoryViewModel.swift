@@ -10,7 +10,7 @@ import Foundation
 
 class OrderHistoryViewModel: ObservableObject {
     
-    // MARK: - Properties
+    // MARK: - Public Properties
     @Published var orders: [OrdersModel] = []
     var uid: String = ""
     
@@ -24,8 +24,8 @@ class OrderHistoryViewModel: ObservableObject {
         self.getOrderHistory()
     }
     
-    // MARK: - Private properties
-    private func getOrderHistory() {
+    // MARK: - Public functions
+    func getOrderHistory() {
         service.getOrders(uid: uid) { orders in
             self.orders = orders
         }

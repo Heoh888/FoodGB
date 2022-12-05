@@ -17,6 +17,7 @@ struct MenuView: View {
     @State var user: User
     @State var searchActivated = false
     @StateObject var ordersViewModel = OrdersViewModel()
+    @StateObject var ordersHisroryViewModel = OrderHistoryViewModel()
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -54,7 +55,8 @@ struct MenuView: View {
                                 user: $user,
                                 searchActivated: $searchActivated,
                                 buttonDisabled: $buttonDisabled,
-                                ordersViewModel: ordersViewModel)
+                                ordersViewModel: ordersViewModel,
+                                ordersHistoryViewModel: ordersHisroryViewModel)
                     .cornerRadius(showMainMenu ? 50 : 0)
                     .onTapGesture {
                         if showMainMenu == true {
@@ -99,11 +101,13 @@ struct MenuView: View {
                                 }
                             })
                             .padding()
-                            
+                            .accessibilityIdentifier("Menu")
                             Spacer()
+                            
                             if !showMainMenu {
                                 NavigationLink {
                                     OrdersView(ordersViewModel: ordersViewModel,
+                                               ordersHistoryViewModel: ordersHisroryViewModel,
                                                selrctedTap: $selectedTap,
                                                currentTab: $currentTab)
                                     .navigationBarTitle(Text("Cart"))
@@ -113,7 +117,6 @@ struct MenuView: View {
                                         .foregroundColor(.black)
                                         .padding(.trailing)
                                 }
-                                
                             }
                         }
                     },

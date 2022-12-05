@@ -24,6 +24,7 @@ struct MainPage: View {
     @Namespace var animation
     @StateObject var myFoodsViewModel = MyFoodsViewModel()
     @StateObject var ordersViewModel: OrdersViewModel
+    @StateObject var ordersHistoryViewModel: OrderHistoryViewModel
     
     // MARK: - Views
     var body: some View {
@@ -42,7 +43,7 @@ struct MainPage: View {
                 PromoView()
                     .tag(TabBar.tagPage)
                 
-                OrderHistoryView()
+                OrderHistoryView(viewModel: ordersHistoryViewModel)
                     .tag(TabBar.inPprocessing)
             }
             
