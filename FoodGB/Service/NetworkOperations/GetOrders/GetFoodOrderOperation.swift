@@ -9,7 +9,7 @@ import Foundation
 
 class GetFoodOrderOperation: AsyncOperation {
 
-    // MARK: - Properties
+    // MARK: - Public Properties
     let uid: String
     var orders = [OrdersModel]()
     

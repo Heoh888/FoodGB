@@ -15,14 +15,9 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
         do {
             try viewContext.save()
         } catch {
-            // TO:DO - Заменить эту реализацию кодом для соответствующей обработки ошибки.
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
@@ -39,7 +34,7 @@ struct PersistenceController {
         }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // TO:DO - Заменить эту реализацию кодом для соответствующей обработки ошибки.
+                // TODO: - Заменить эту реализацию кодом для соответствующей обработки ошибки.
                 /*
                  Типичные причины ошибки здесь включают:
                     * Родительский каталог не существует, не может быть создан или запрещает запись.
@@ -53,3 +48,4 @@ struct PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
 }
+
