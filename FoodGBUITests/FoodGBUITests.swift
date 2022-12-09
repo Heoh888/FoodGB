@@ -43,7 +43,7 @@ final class FoodGBUITests: XCTestCase {
         
         let passwordRegistration = app.secureTextFields["Registration Password"]
         passwordRegistration.tap()
-        passwordRegistration.typeText("Testferf4r")
+        passwordRegistration.typeText("TJFJFEUFHEF")
         
         app.tap() // сброс клавиатуры
         
@@ -69,7 +69,7 @@ final class FoodGBUITests: XCTestCase {
         
         let password = app.secureTextFields["Login Password"]
         password.tap()
-        password.typeText("Testferf4r")
+        password.typeText("TJFJFEUFHEF")
         
         app.tap() // сброс клавиатуры
         

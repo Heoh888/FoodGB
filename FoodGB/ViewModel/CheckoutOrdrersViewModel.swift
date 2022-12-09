@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 class CheckoutOrdrersViewModel: ObservableObject {
     
@@ -46,5 +47,6 @@ class CheckoutOrdrersViewModel: ObservableObject {
         
         service.createOrder(foods: foods, uid: uid, data: data)
         service.deleteFoodsCart(foods: foods, uid: uid)
+        Analytics.logEvent("Adding_food_cart", parameters: ["total_price": total])
     }
 }

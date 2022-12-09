@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 class MyFoodsViewModel: ObservableObject {
     
@@ -35,6 +36,7 @@ class MyFoodsViewModel: ObservableObject {
     func addMyFood(food: Food) {
         service.addMyFood(food: food, uid: uid, id: food.id!)
         getMyFoods()
+        Analytics.logEvent("Adding_my_food", parameters: [AnalyticsParameterContentType: "cont"])
     }
     
     func isLike(id: String) -> Bool {

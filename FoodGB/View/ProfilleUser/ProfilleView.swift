@@ -94,7 +94,6 @@ struct ProfilleView: View {
     @ViewBuilder
     func buttonMenu(label: String) -> some View {
         Button {
-            
         } label: {
             HStack {
                 Text(label)
