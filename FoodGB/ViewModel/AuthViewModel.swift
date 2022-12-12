@@ -6,6 +6,7 @@
 //
 
 import FirebaseAuth
+import FirebaseAnalytics
 
 class AuthViewModel: ObservableObject {
     
@@ -45,11 +46,13 @@ class AuthViewModel: ObservableObject {
         service.login(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let user):
-                self.userSession = user
+            case .success(let session):
+                self.userSession = session
+                Analytics.logEvent("Successful_login", parameters: [AnalyticsParameterContentType: "cont"])
                 self.getUser()
             case let .failure(error):
                 self.warning = error.localizedDescription
+                Analytics.logEvent("Unsuccessful_login", parameters: ["status": error.localizedDescription])
             }
         }
     }
@@ -61,6 +64,7 @@ class AuthViewModel: ObservableObject {
             case .success(let user):
                 self.userSession = user
                 self.getUser()
+                Analytics.logEvent("Registration", parameters: [AnalyticsParameterContentType: "cont"])
             case let .failure(error):
                 self.warning = error.localizedDescription
             }
@@ -70,5 +74,6 @@ class AuthViewModel: ObservableObject {
     func signout() {
         self.userSession = nil
         service.signout()
+        Analytics.logEvent("Exit", parameters: [AnalyticsParameterContentType: "cont"])
     }
 }

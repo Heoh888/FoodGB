@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import FirebaseAnalytics
 
 class HomeViewModel: ObservableObject {
     
@@ -60,6 +61,7 @@ class HomeViewModel: ObservableObject {
                 self.foods = foods
                 self.getTypeFoods(foods: foods)
                 self.filteredFoodsByType(type: "All")
+                Analytics.logEvent("Opening_products", parameters: [AnalyticsParameterContentType: "cont"])
             case let .failure(error):
                 self.error = error
             }

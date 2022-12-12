@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import FirebaseAnalyticsSwift
 
 struct DetailsFoodView: View {
     
@@ -99,5 +100,6 @@ struct DetailsFoodView: View {
                 }
             }
         }
+        .analyticsScreen(name: "Opening_product", extraParameters: ["product": food.name])
     }
 }

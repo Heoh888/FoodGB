@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import FirebaseAnalyticsSwift
 
 struct OrdersCell: View {
     // MARK: - Properties

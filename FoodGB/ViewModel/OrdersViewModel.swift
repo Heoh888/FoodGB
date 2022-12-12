@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 enum MoreLess {
     case less
@@ -39,12 +40,14 @@ class OrdersViewModel: ObservableObject {
         guard let id = food.id else { return }
         service.deleteFoodCart(uid: uid, id: id)
         getFoodsCart()
+        Analytics.logEvent("Removing_food_cart", parameters: ["name_food": food.name])
     }
     
     func addFoodCart(food: Food) {
         guard let id = food.id else { return }
         service.addFoodCart(food: food, uid: uid, id: id)
         getFoodsCart()
+        Analytics.logEvent("Adding_food_cart", parameters: ["name_food": food.name])
     }
     
     func changeAmountFood(food: Food, value: MoreLess) {
