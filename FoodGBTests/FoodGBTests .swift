@@ -59,11 +59,6 @@ final class FoodGBTests: XCTestCase {
     }
     
     // MARK: - testing AuthViewModel
-    func testGetUser() throws {
-        let viewModel = AuthViewModel(service: service)
-        XCTAssertNotNil(viewModel.currentUser)
-    }
-    
     func testSignout() throws {
         let viewModel = AuthViewModel(service: service)
         viewModel.signout()
